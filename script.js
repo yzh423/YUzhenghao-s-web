@@ -88,6 +88,77 @@
   setMenu(false);
   updateNavigation();
 
+  const gallery = document.querySelector('.photo-gallery');
+  if (gallery) {
+    const deck = gallery.querySelector('.photo-deck');
+    const slides = [...gallery.querySelectorAll('.photo-slide')];
+    const title = gallery.querySelector('.gallery-title');
+    const count = gallery.querySelector('.photo-count');
+    const status = gallery.querySelector('.gallery-status');
+    const buttons = gallery.querySelector('.photo-controls');
+    let current = 0;
+    let gesture;
+    let suppressClickUntil = 0;
+    gallery.setAttribute('role', 'region');
+    gallery.setAttribute('aria-roledescription', 'carousel');
+    buttons.hidden = false;
+    count.hidden = false;
+    slides.forEach((slide, index) => {
+      slide.setAttribute('role', 'group');
+      slide.setAttribute('aria-roledescription', 'slide');
+      slide.setAttribute('aria-label', `${index + 1} of ${slides.length}`);
+    });
+    function showPhoto(index, animate = false, announce = true) {
+      const moveFocus = slides.some(slide => slide.contains(document.activeElement));
+      const previous = slides.map(slide => {
+        const style = getComputedStyle(slide);
+        return { transform: style.transform, opacity: style.opacity };
+      });
+      slides.forEach(slide => slide.getAnimations().forEach(animation => animation.cancel()));
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        const position = (i - current + slides.length) % slides.length;
+        slide.dataset.position = String(position);
+        slide.inert = position !== 0;
+        slide.setAttribute('aria-hidden', String(position !== 0));
+        if (animate && !reduced.matches) {
+          const style = getComputedStyle(slide);
+          slide.animate([previous[i], { transform: style.transform, opacity: style.opacity }], { duration: 280, easing: ease });
+        }
+      });
+      title.textContent = slides[current].dataset.title;
+      count.textContent = `${current + 1} / ${slides.length}`;
+      if (announce) status.textContent = `Photo ${current + 1} of ${slides.length}: ${title.textContent}.`;
+      if (moveFocus) slides[current].querySelector('a').focus({ preventScroll: true });
+    }
+    buttons.querySelectorAll('button').forEach(button => button.addEventListener('click', event => {
+      showPhoto(current + Number(button.dataset.step), event.detail > 0);
+    }));
+    gallery.addEventListener('keydown', event => {
+      if (!deck.contains(event.target) && !buttons.contains(event.target)) return;
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      showPhoto(current + (event.key === 'ArrowRight' ? 1 : -1));
+    });
+    deck.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'touch' || event.pointerType === 'pen') gesture = { id: event.pointerId, x: event.clientX, y: event.clientY };
+    });
+    document.addEventListener('pointerup', event => {
+      if (!gesture || gesture.id !== event.pointerId) return;
+      const dx = event.clientX - gesture.x, dy = event.clientY - gesture.y;
+      gesture = undefined;
+      if (Math.abs(dx) < 45 || Math.abs(dx) <= Math.abs(dy) * 1.3) return;
+      suppressClickUntil = performance.now() + 400;
+      showPhoto(current + (dx < 0 ? 1 : -1), true);
+    });
+    document.addEventListener('pointercancel', () => { gesture = undefined; });
+    deck.addEventListener('click', event => {
+      if (performance.now() < suppressClickUntil) { event.preventDefault(); event.stopPropagation(); }
+    }, true);
+    showPhoto(0, false, false);
+  }
+
   let evidenceTransition;
   const controls = document.querySelector('.evidence-controls');
   if (controls) {
@@ -163,23 +234,21 @@
       });
     });
   });
-  if (!reduced.matches && Element.prototype.animate) {
+  if (!reduced.matches && !root.dataset.incomingTransition && Element.prototype.animate) {
     document.querySelectorAll('.name-line > span').forEach((line, index) => {
       entrance.push(line.animate([{ transform: 'translateY(28%)', opacity: .3 }, { transform: 'translateY(0)', opacity: 1 }], { duration: 700, delay: index * 70, easing: ease, fill: 'backwards' }));
     });
-    const photograph = document.querySelector('.hero-image-frame');
+    const photograph = document.querySelector('.photo-gallery');
     if (photograph) entrance.push(photograph.animate([
-      { clipPath: 'inset(0 0 18% 0)', transform: 'translateY(12px)', opacity: .6 },
-      { clipPath: 'inset(0)', transform: 'translateY(0)', opacity: 1 }
+      { transform: 'translateY(12px)', opacity: .6 },
+      { transform: 'translateY(0)', opacity: 1 }
     ], { duration: 680, delay: 100, easing: ease, fill: 'backwards' }));
   }
   addEventListener('pageswap', event => {
-    event.viewTransition?.ready.catch(() => {});
     if (reduced.matches || input === 'keyboard') event.viewTransition?.skipTransition();
   });
   addEventListener('pagereveal', event => {
     if (!event.viewTransition) return;
-    event.viewTransition.ready.catch(() => {});
     entrance.forEach(animation => animation.cancel());
     if (reduced.matches) event.viewTransition.skipTransition();
   });

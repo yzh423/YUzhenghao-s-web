@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T16:52:16Z",
+  "generatedAt": "2026-10-16T17:13:07Z",
   "title": "Design System: Zhenghao YU research portfolio",
   "extensions": {
     "colorMeta": {
@@ -204,7 +204,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Personal name",
-        "purpose": "The two-line personal name shares the opening grid with a real Victoria Harbour dusk photograph; the desktop size caps at 112px and responsive sizes are documented in DESIGN.md."
+        "purpose": "The two-line personal name shares the opening grid with a compact stack of real Hong Kong photographs; the desktop size caps at 112px and responsive sizes are documented in DESIGN.md."
       },
       "headline": {
         "displayName": "Section headline",
@@ -248,23 +248,38 @@
         "name": "mobile-navigation-drawer",
         "value": "0 20px 28px #1f2b4d0d",
         "purpose": "Structural separation beneath the anchored mobile navigation drawer at 850px and below; the dismissible backdrop is #1f2b4d24. Ordinary content surfaces remain flat."
+      },
+      {
+        "name": "stacked-photographs",
+        "value": "0 8px 24px #1f2b4d1c",
+        "purpose": "Literal overlapping hero photographs requested by the user. White 6px paper edges and slight 2D rotations separate the three images; this treatment does not establish a content-card shadow."
       }
     ],
     "motion": [
       {
         "name": "ease-out",
         "value": "cubic-bezier(.22,1,.36,1)",
-        "purpose": "Implemented easing for the bounded hero entrance, drawer, marker, native reading transition, disclosure body, photo hover, icons and action transforms."
+        "purpose": "Implemented easing for the bounded hero entrance, photograph shuffle, drawer, marker, native reading transition, disclosure body, icons and action transforms."
       },
       {
         "name": "name-entrance",
         "value": "700ms; second-line delay 70ms; translateY(28%) and opacity .3 to 0 and 1",
-        "purpose": "Once on load for each personal-name line; the second line ends at 770ms. Skipped for reduced motion and cancelled when a native page reveal supplies continuity."
+        "purpose": "Once on load for each personal-name line; the second line ends at 770ms. Skipped for reduced motion or when an incoming native page transition owns the arrival; active entrances are cancelled on native page reveal."
       },
       {
-        "name": "hero-photo-entrance",
-        "value": "680ms; delay 100ms; clip-path inset(0 0 18% 0), translateY(12px), opacity .6 to inset(0), 0, 1",
-        "purpose": "The Victoria Harbour photograph opens beside Daniel; this is the longest hero entrance at 780ms total. Content remains visible in the source."
+        "name": "hero-gallery-entrance",
+        "value": "680ms; delay 100ms; complete gallery translateY(12px) and opacity .6 to 0 and 1",
+        "purpose": "The compact three-photo gallery enters as a whole so exposed paper edges remain unclipped; the longest hero entrance is 780ms total. Content remains visible in source. No single-photo clip mask or hover enlargement is applied."
+      },
+      {
+        "name": "photo-shuffle",
+        "value": "280ms; live rendered transform and opacity to new stack position",
+        "purpose": "Pointer and horizontal touch or pen changes retarget from the current animation state. The front image is unrotated; rear transforms are translate(10px,-10px) rotate(3deg) at .94 opacity and translate(-10px,-18px) rotate(-3deg) at .88 opacity. Wraps, never autoplays; keyboard and reduced-motion changes are immediate."
+      },
+      {
+        "name": "photo-control-state",
+        "value": "140ms background-color and transform",
+        "purpose": "The native 44px previous/next buttons darken on fine-pointer hover and use the shared .97 press scale."
       },
       {
         "name": "mobile-menu-open",
@@ -294,7 +309,7 @@
       {
         "name": "page-navigation",
         "value": "outgoing 100ms opacity fade; incoming 220ms from translateY(8px) and opacity 0; rail animation none",
-        "purpose": "Progressive same-origin cross-document View Transitions preserve the identity rail. Unsupported browsers navigate normally; keyboard navigation and reduced motion skip the transition."
+        "purpose": "Progressive same-origin cross-document View Transitions preserve the identity rail. Critical opt-in, reduced-motion override and lifecycle promise handling are in each document head. An incoming flag prevents delayed enhancement from duplicating the entrance. Unsupported browsers navigate normally; keyboard navigation and reduced motion skip the transition."
       },
       {
         "name": "disclosure-open",
@@ -305,11 +320,6 @@
         "name": "plus-rotation",
         "value": "160ms; rotate(45deg) when open",
         "purpose": "Menu and ordinary disclosure state feedback; keyboard input disables the CSS transition. Photograph credits omit the disclosure plus."
-      },
-      {
-        "name": "hero-photo-hover",
-        "value": "700ms; scale(1.025)",
-        "purpose": "Fine-pointer hover within the clipped photographic frame; reduced motion makes it effectively immediate."
       },
       {
         "name": "press",
@@ -384,7 +394,7 @@
       "name": "Section navigation",
       "kind": "nav",
       "refersTo": "navigation-link",
-      "description": "Light links on a navy ground; the current destination gains paper fill, navy text, weight 700, and the orange square. The site script moves the marker over 220ms and settles it immediately for keyboard input.",
+      "description": "Light links on a navy ground; the current destination gains paper fill, navy text, weight 700, and the orange square. The site script moves the marker over 220ms and settles it immediately for keyboard input. The desktop identity uses an 80x94px portrait above the name and 32px group gaps; at 850px and below a 46x56px portrait returns to an identity row within the shared 88px header, drawer and backdrop geometry.",
       "html": "<div class=\"ds-rail\"><nav class=\"ds-nav\" aria-label=\"Primary navigation\"><a href=\"#projects\" aria-current=\"location\">Work</a><a href=\"#publications\">Publications</a><a href=\"#about\">About</a><a href=\"#contact\">Contact</a><span class=\"ds-nav-indicator\" aria-hidden=\"true\"></span></nav></div>",
       "css": ".ds-rail{padding:36px 24px;background:var(--ink,#1f2b4d);color:var(--paper,#fff);}.ds-nav{font-family:Chivo,Arial,sans-serif;position:relative;display:flex;flex-direction:column;align-items:stretch;gap:4px;}.ds-nav a{position:relative;padding:8px 12px;color:var(--rail-secondary,#c8d3e8);font-size:14px;line-height:1.6;text-decoration:none;transition:color 180ms ease;}.ds-nav a[aria-current]{background:var(--paper,#fff);color:var(--ink,#1f2b4d);font-weight:700;}.ds-nav-indicator{position:absolute;inset:0 auto auto 0;width:6px;height:6px;background:var(--accent,#f7941d);pointer-events:none;transform:translate3d(-12px,16.2px,0);transition:transform 220ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-nav a:focus-visible{outline:3px solid var(--accent,#f7941d);outline-offset:5px;}@media(hover:hover) and (pointer:fine){.ds-nav a:hover:not([aria-current]){color:var(--paper,#fff);background:var(--rail-hover,#34425f);}}@media(prefers-reduced-motion:reduce){.ds-nav a,.ds-nav-indicator{transition-duration:.01ms;}}"
     },
@@ -434,11 +444,19 @@
       "description": "Adjacent full-width pale blue and white reading chapters share the page inset and equal top/bottom section padding; headings reinforce the boundary.",
       "html": "<div class=\"ds-chapters\"><section class=\"ds-chapter ds-chapter-pale\"><h2>Selected work</h2><p>Research and engineering, from industrial data to reliable motion.</p></section><section class=\"ds-chapter\"><h2>Publications</h2></section></div>",
       "css": ".ds-chapters{font-family:Chivo,Arial,sans-serif;color:var(--ink,#1f2b4d);}.ds-chapter{padding:96px var(--space,clamp(24px,4vw,64px));background:var(--paper,#fff);}.ds-chapter-pale{background:var(--section-ground,#eef1f6);}.ds-chapter h2{margin:0;font-size:clamp(36px,4vw,58px);font-weight:550;line-height:1.1;letter-spacing:-.025em;text-wrap:balance;}.ds-chapter p{max-width:36ch;margin:24px 0 0;font-size:16px;line-height:1.6;}@media(max-width:850px){.ds-chapter{padding:80px var(--space,28px);}}@media(max-width:600px){.ds-chapter{padding:64px var(--space,20px);}}"
+    },
+    {
+      "name": "Photograph navigation",
+      "kind": "custom",
+      "refersTo": "photo-control",
+      "description": "The compact photo stack toolbar: title, tabular counter and native 44px previous/next buttons. The live gallery caps at 420px with 20px side padding (380px front frame), or 300px (260px frame) on phones; photographs remain 4:3. Its script keeps the title, counter, polite status and active full-image link in sync, removes inactive slides from focus and accessibility trees, and provides manual wrapping buttons, unmodified Left/Right keys and horizontal swipe, preserving modified browser shortcuts. Without JavaScript all three linked photographs remain in a native horizontal strip.",
+      "html": "<div class=\"ds-gallery-toolbar\"><div class=\"ds-gallery-meta\"><span class=\"ds-gallery-title\">Victoria Harbour at dusk</span><span class=\"ds-photo-count\" aria-hidden=\"true\">1 / 3</span></div><div class=\"ds-photo-controls\"><button type=\"button\" aria-label=\"Previous photograph\"><svg aria-hidden=\"true\" fill=\"none\" viewBox=\"0 0 24 24\"><path d=\"m14 6-6 6 6 6M8 12h12\"></path></svg></button><button type=\"button\" aria-label=\"Next photograph\"><svg aria-hidden=\"true\" fill=\"none\" viewBox=\"0 0 24 24\"><path d=\"m10 6 6 6-6 6M4 12h12\"></path></svg></button></div></div>",
+      "css": ".ds-gallery-toolbar{font-family:Chivo,Arial,sans-serif;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;color:var(--ink,#1f2b4d);font-size:14px;line-height:1.6;}.ds-gallery-meta{flex:1;min-width:0;}.ds-gallery-title{display:block;min-height:2.8em;line-height:1.4;}.ds-photo-count{display:block;margin-top:6px;color:var(--muted,#515d78);font-variant-numeric:tabular-nums;}.ds-photo-controls{display:flex;gap:4px;}.ds-photo-controls button{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:0;background:var(--ink,#1f2b4d);color:var(--paper,#fff);cursor:pointer;transition:background-color 140ms var(--ease-out,cubic-bezier(.22,1,.36,1)),transform 140ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-photo-controls svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}.ds-photo-controls button:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}.ds-photo-controls button:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-photo-controls button:hover{background:var(--dark,#10192d);}}@media(prefers-reduced-motion:reduce){.ds-photo-controls button{transition-duration:.01ms;}}"
     }
   ],
   "narrative": {
     "northStar": "The Open Research Record",
-    "overview": "The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. A navy portrait rail keeps identity and navigation available beside a calm reading column. White and pale blue chapter fields separate introduction, evidence, publications, and background; small orange marks identify interaction and emphasis.\n\nThis name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, layout-motion.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; the opening composition and motion are refined in docs/hero-motion-refinement.md, with navigation and chapter contrast recorded in docs/section-contrast-refinement.md. No visual-comp fidelity or catalog quality-bar approval is asserted.",
+    "overview": "The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. A navy portrait rail keeps identity and navigation available beside a calm reading column. White and pale blue chapter fields separate introduction, evidence, publications, and background; small orange marks identify interaction and emphasis.\n\nThis name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, layout-motion.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; the opening composition and motion are refined in docs/hero-motion-refinement.md, navigation and chapter contrast in docs/section-contrast-refinement.md, and the compact photo stack and larger identity portrait in docs/stacked-photo-refinement.md. No visual-comp fidelity or catalog quality-bar approval is asserted.",
     "keyCharacteristics": [
       "Type-led identity with a self-hosted Chivo variable font.",
       "A navy navigation ground, white and pale blue chapter fields, and restrained orange interaction marks.",
@@ -485,7 +503,7 @@
       "**Don't** turn the asymmetric project sequence into a repeated rounded-card grid.",
       "**Don't** crop scientific evidence for a photographic effect or detach it from its experimental context.",
       "**Don't** add gradients, decorative grids, 3D effects, synthetic evidence, or invented personal photographs.",
-      "**Don't** add routine card shadows; the existing shadow belongs to the anchored mobile navigation drawer.",
+      "**Don't** add routine card shadows; the documented shadows belong to the anchored mobile navigation drawer and the literal photograph stack.",
       "**Don't** make essential text, navigation, or evidence depend on JavaScript or entrance motion."
     ]
   }

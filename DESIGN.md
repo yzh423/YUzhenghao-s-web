@@ -158,6 +158,16 @@ components:
   contact-field:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.paper}"
+  photo-control:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    rounded: "{rounded.square}"
+    padding: "0"
+    width: "44px"
+    height: "44px"
+  photo-control-hover:
+    backgroundColor: "{colors.dark}"
+    textColor: "{colors.paper}"
 ---
 
 # Design System: Zhenghao YU research portfolio
@@ -168,7 +178,7 @@ components:
 
 The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. A navy portrait rail keeps identity and navigation available beside a calm reading column. White and pale blue chapter fields separate introduction, evidence, publications, and background; small orange marks identify interaction and emphasis.
 
-This name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, layout-motion.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; the opening composition and motion are refined in docs/hero-motion-refinement.md, with navigation and chapter contrast recorded in docs/section-contrast-refinement.md. No visual-comp fidelity or catalog quality-bar approval is asserted.
+This name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, layout-motion.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; the opening composition and motion are refined in docs/hero-motion-refinement.md, navigation and chapter contrast in docs/section-contrast-refinement.md, and the compact photo stack and larger identity portrait in docs/stacked-photo-refinement.md. No visual-comp fidelity or catalog quality-bar approval is asserted.
 
 **Key Characteristics:**
 
@@ -233,9 +243,9 @@ The composed hero keeps its display cap on wide screens. Between 851px and 1150p
 
 Desktop uses a fixed navy left identity rail and a padded main column. The rail is 200px wide by default, 170px at 1150px and below, and 240px from 1800px. Main and footer offsets follow that width. The main container caps at 1700px, with the fluid page inset token; the inset becomes 32px below 1150px, 28px below 850px, and 20px below 600px.
 
-The homepage hero uses an asymmetric .43fr / .57fr grid with a fluid 28–48px column gap and no minimum viewport height. The first name line spans the grid; Daniel occupies the left side while the real Victoria Harbour dusk photograph begins below the first line on the right. The positioning statement, introduction, and grouped work/contact actions sit beneath Daniel. The availability note spans the bottom row. The photograph stays inside the hero with a location caption, a link to its uncropped panorama, and a native credit disclosure; visible text does not overlay it. The downloaded panorama is 1280×508px, photographed by Dllu from Victoria Peak and licensed CC BY-SA 4.0. The source-file and license links remain in the credit disclosure.
+The homepage hero uses an asymmetric .43fr / .57fr grid with a fluid 28–48px column gap and no minimum viewport height. The first name line spans the grid; Daniel occupies the left side while a compact stack of three real Hong Kong photographs begins below the first line on the right. The positioning statement, introduction, and grouped work/contact actions sit beneath Daniel. The availability note spans the bottom row. The gallery is centered in its grid slot, capped at 420px including 20px side padding, giving a 380px front frame when space permits. Its top margin is one display line plus 40px. The front frame has a 4:3 aspect ratio; its rear edges remain visible. Title, counter, previous/next controls, and native credit disclosure sit beneath the stack without overlaying the pictures. Each photograph links to its uncropped local file. The credits preserve Dllu's Victoria Harbour dusk panorama under CC BY-SA 4.0 and the HKU/Pok Fu Lam and harbour waterfront photographs by Qwer132477 and Alexkom000 under CC BY 4.0.
 
-Hero top padding is 48px on the default desktop layout, 36px between 851px and 1150px, and 32px at 850px and below. At 600px and below it becomes a single column with 30px top padding, ordered name, introduction/actions, photograph, availability note. The image frame uses a 1.34 aspect ratio by default, 1.22 at 850px and below, and 1.48 at 600px and below. Crops apply only to photographs and contextual thumbnails. Scientific evidence remains contained and legible.
+Hero top padding is 48px on the default desktop layout, 36px between 851px and 1150px, and 32px at 850px and below. At 600px and below it becomes a single column with 30px top padding, ordered name, introduction/actions, gallery, availability note. The gallery is centered, capped at 300px including its side padding, giving a 260px front frame. The gallery's 4:3 frame takes precedence over the older single-image responsive ratios. Crops apply only to photographs and contextual thumbnails. Scientific evidence remains contained and legible.
 
 Reading chapters extend to the main column's outer edges using negative page insets and restore the same inset around their contents. They use equal top and bottom section padding, reduced at the tablet and phone breakpoints using the section spacing tokens. The homepage sequence is white introduction, pale blue selected work, white publications, pale blue about, white research, pale blue news, white experience, pale blue education/skills, and navy contact. The hero has its own bottom spacing token. Contact retains its existing 80px top inset, reduced to 56px on phones. The white evidence browser and news disclosure remain distinct within pale chapters.
 
@@ -243,23 +253,24 @@ Project features use asymmetric image/text columns and fluid 32–64px gaps. The
 
 The evidence browser uses a 1.25fr / 1fr figure-and-copy split; below 1150px the figure moves above a two-column text region, and below 600px the copy becomes a simple stack. Publication rows use .68fr / 1fr columns. About uses 1.15fr / .8fr columns, research themes use two columns, and the desktop timeline separates date, position, and description. These arrangements collapse to one reading column on small screens. Photo pairings retain deliberate size differences. In the dark project above 600px, the title occupies the first row of the left column and its factual context sits directly beneath it; narrative and resources occupy the right column.
 
-At 850px and below the rail becomes a sticky navy top header with a compact portrait, identity, and a Menu control. With JavaScript the navy navigation drawer spans the full header width immediately below the 76px header and overlays the reading surface without moving it; it scrolls within the remaining dynamic viewport height. Its absolute positioning is relative to the full rail inner container. A translucent navy backdrop dismisses the drawer. The navigation uses three columns, reduced to two below 600px; the CV and contact links appear beneath it. Without JavaScript, the mobile header is in normal flow and navigation stays visible. Anchor scrolling reserves 28px on desktop and 108px in the mobile-header layout.
+The desktop identity portrait sits above the name, with a 12px internal gap; the rail's major groups are separated by 32px and retain vertical scrolling on short screens. At 850px and below the rail becomes a sticky navy top header with a portrait-and-identity row and a Menu control. With JavaScript the navy navigation drawer spans the full header width immediately below the 88px header and overlays the reading surface without moving it; it scrolls within the remaining dynamic viewport height. Its absolute positioning is relative to the full rail inner container. Header, drawer-height calculation, and backdrop share the same mobile-header custom property. A translucent navy backdrop dismisses the drawer. The navigation uses three columns, reduced to two below 600px; the CV and contact links appear beneath it. Without JavaScript, the mobile header is in normal flow and navigation stays visible. Anchor scrolling reserves 28px on desktop and 108px in the mobile-header layout.
 
 The manipulation detail page shares the navy rail, page insets, type, and chapter padding. Outcomes and evidence use pale blue full-width fields between white chapters. Its hero stacks the full title and video; a navy three-metric band follows, with the hero-bottom spacing token separating it from the next chapter. Two-column conclusions and scope layouts collapse below 1100px; method and evidence grids collapse below 600px.
 
 ## Elevation & Depth
 
-The reading system is flat. White, pale blue, soft-neutral, and navy fields, image scale, and whitespace provide hierarchy. There are no routine card shadows, gradients, decorative grids, or 3D effects in the implementation. A light structural shadow and translucent backdrop separate the open mobile navigation drawer from the reading surface.
+The reading system is flat. White, pale blue, soft-neutral, and navy fields, image scale, and whitespace provide hierarchy. There are no routine card shadows, gradients, decorative grids, or 3D effects in the implementation. A light structural shadow and translucent backdrop separate the open mobile navigation drawer from the reading surface. The user-requested photograph stack uses small 2D rotations, white paper edges, and a soft shadow to make literal overlapping photographs legible; this material treatment belongs to photographs and does not establish a content-card style.
 
 ### Shadow Vocabulary
 
 - **Mobile navigation drawer:** 0 20px 28px #1f2b4d0d. It separates the anchored overlay from the document while the small-screen menu is open; its backdrop uses #1f2b4d24.
+- **Stacked photographs:** 0 8px 24px #1f2b4d1c. It separates the three physical-looking photograph edges within the compact hero gallery.
 
 **The Flat Evidence Rule.** Scientific figures and ordinary content containers rely on a tonal surround and spacing; do not add decorative elevation to the evidence.
 
 ## Shapes
 
-Surfaces and controls use square corners. Photography and scientific graphics remain rectangular, with no ornamental clipping. The compact identity portrait is a 44×52px crop on desktop and 36×44px in the mobile header; the larger about portrait uses a 4:5 crop.
+Surfaces and controls use square corners. Photography and scientific graphics remain rectangular, with no ornamental clipping. The identity portrait is an 80×94px crop on desktop and 46×56px in the mobile header; the larger about portrait uses a 4:5 crop. The gallery photographs use a 6px paper-colored border. The first rear photograph translates 10px right and 10px up with a 3-degree rotation and .94 opacity; the second translates 10px left and 18px up with a -3-degree rotation and .88 opacity. The current photograph stays unrotated and fully opaque.
 
 The scripted current-navigation marker is a small 6px square; the source-only current-link fallback is 5px. Native disclosures use a typographic plus that rotates 45 degrees when open. The unfilled photograph-credit disclosure omits that mark. Thin stroked inline SVG arrows accompany actions; the shared icon vocabulary uses a 1.5px stroke with round caps and joins.
 
@@ -280,6 +291,12 @@ Menu is a square, text-and-plus control with at least a 44px target height. Open
 ### Disclosures
 
 Soft-neutral surfaces use disclosure padding. Summary text is 14px and weight 500, with a minimum 24px internal summary height and a rotating plus aligned at the right. The global visible focus outline gains an 8px offset on summaries. Open body copy is 14px with line-height 1.65. Pointer opening settles newly visible body content from 4px below and .4 opacity over 180ms; keyboard and reduced-motion openings are immediate. Dark-project disclosures use the reversed surface and white text. The photograph-credit disclosure is deliberately unfilled and omits the plus.
+
+### Compact photograph stack
+
+Three credited photographs share a compact 4:3 deck. Square navy previous/next buttons use the photo-control token, 1.5px stroked SVG arrows, and a 4px gap. Their fine-pointer hover uses Simulation Night and their press feedback follows the shared action treatment. A visible title and tabular counter identify the active photograph; a polite atomic status announces changes. The native credit disclosure keeps author, source, and license links adjacent.
+
+The enhanced gallery wraps at either end and never autoplays. Buttons, unmodified Left/Right keys while focus is in the deck or controls, and horizontal touch or pen gestures change the photograph. Modified arrow keys preserve native browser shortcuts. A gesture must travel at least 45px horizontally and exceed vertical travel by a factor of 1.3; ordinary vertical scrolling remains available. Pointer changes animate from each photograph's current rendered transform and opacity over 280ms, so rapid requests retarget the live shuffle. Keyboard and reduced-motion changes are immediate. Inactive photographs are inert and hidden from assistive technology; their full-image links leave the focus order. If focus was inside a photograph when it changes, it follows the current full-image link. Without JavaScript, all three linked photographs remain available in a native horizontally scrolling, snap-aligned strip; enhanced controls and the counter stay hidden.
 
 ### Evidence browser
 
@@ -305,9 +322,9 @@ A full-width navy closing field carries a large invitation, email, supporting li
 
 ### Motion and accessibility
 
-The bounded hero entrance starts on load: each name line rises from 28% below and .3 opacity over 700ms, with a 70ms second-line delay. The image frame opens from an 18% bottom inset while rising 12px from .6 opacity over 680ms after a 100ms delay. The longest total is 780ms. These transitions use cubic-bezier(.22, 1, .36, 1). Content starts visible in the source and has no repeated intersection-triggered reveals. Fine-pointer hover enlarges the hero photograph to 1.025 over 700ms inside its clipped frame.
+The bounded hero entrance starts on load: each name line rises from 28% below and .3 opacity over 700ms, with a 70ms second-line delay. The complete gallery rises 12px from .6 opacity over 680ms after a 100ms delay, leaving the exposed rear photo edges unclipped. The longest total is 780ms. These transitions use cubic-bezier(.22, 1, .36, 1). Content starts visible in the source and has no repeated intersection-triggered reveals. The former single-photo clip reveal and enlargement on hover do not apply to the stack.
 
-Same-origin page navigation progressively uses cross-document View Transitions: the identity rail remains stable while the outgoing reading surface fades over 100ms and the incoming surface settles from 8px below over 220ms. Unsupported browsers navigate normally. Keyboard navigation and reduced motion skip that transition; a page reveal with a native transition cancels the load entrance to avoid overlapping choreography. The shared layout/motion stylesheet is loaded by the homepage and the manipulation detail page.
+Same-origin page navigation progressively uses cross-document View Transitions: the identity rail remains stable while the outgoing reading surface fades over 100ms and the incoming surface settles from 8px below over 220ms. Unsupported browsers navigate normally. Keyboard navigation and reduced motion skip that transition; a page reveal with a native transition cancels the load entrance to avoid overlapping choreography. Critical transition opt-in, the reduced-motion override, and lifecycle promise handling live in each document head so they are available before the bottom enhancement script. An incoming-transition flag also prevents a delayed enhancement script from starting a duplicate entrance. The shared layout/motion stylesheet is loaded by the homepage and the manipulation detail page.
 
 State transitions remain short: arrow movement 180ms, action press 140ms, disclosure/menu plus rotation 160ms, and surface/color changes 180ms. Reduced-motion preference skips scripted entrances and state animations, disables native View Transitions, makes CSS animations/transitions effectively immediate, and changes scrolling to automatic. Changing the preference during an interaction cancels active animations and settles the menu. Content remains readable in the same order with reduced motion or no JavaScript.
 
@@ -331,5 +348,5 @@ State transitions remain short: arrow movement 180ms, action press 140ms, disclo
 - **Don't** turn the asymmetric project sequence into a repeated rounded-card grid.
 - **Don't** crop scientific evidence for a photographic effect or detach it from its experimental context.
 - **Don't** add gradients, decorative grids, 3D effects, synthetic evidence, or invented personal photographs.
-- **Don't** add routine card shadows; the existing shadow belongs to the anchored mobile navigation drawer.
+- **Don't** add routine card shadows; the documented shadows belong to the anchored mobile navigation drawer and the literal photograph stack.
 - **Don't** make essential text, navigation, or evidence depend on JavaScript or entrance motion.

@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "node scripts/serve.mjs",
     "check": "node scripts/check-site.mjs",
-    "test:browser": "node scripts/browser-qa.mjs"
+    "test:browser": "node scripts/browser-qa.mjs",
+    "test:gallery": "node scripts/gallery-qa.mjs",
+    "test:transitions": "node scripts/transition-qa.mjs"
   },
   "devDependencies": { "playwright": "1.62.1" }
 }

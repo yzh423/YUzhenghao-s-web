@@ -22,12 +22,12 @@ npm install
 npx playwright install chromium
 ```
 
-The QA script defaults to installed Microsoft Edge. Run `npm run test:browser`; use `BROWSER_CHANNEL=chromium` to select Playwright's Chromium instead. On Windows PowerShell set `$env:BROWSER_CHANNEL = 'chromium'` separately. `SITE_URL` selects a deployed URL. `PLAYWRIGHT_MODULE` can point to a managed external runtime. Screenshots and results go to `output/playwright/`, excluded from source control.
+The QA scripts default to installed Microsoft Edge. Run `npm run test:browser` for the site, `npm run test:gallery` for photograph switching/touch/keyboard behavior, and `npm run test:transitions` for delayed-script document navigation. Use `BROWSER_CHANNEL=chromium` to select Playwright's Chromium instead. On Windows PowerShell set `$env:BROWSER_CHANNEL = 'chromium'` separately. `SITE_URL` selects a deployed URL. `PLAYWRIGHT_MODULE` can point to a managed external runtime. Screenshots and results go to `output/playwright/`, excluded from source control.
 
 ## Content and design
 
 - `index.html` holds homepage content. The full research study is in `projects/reliable-robotic-manipulation/`.
-- `styles.css` and `script.js` define the shared visual system, accessible mobile menu, keyboard-operated evidence viewer, navigation state and optional motion.
+- `styles.css`, `layout-motion.css` and `script.js` define the shared visual system, accessible mobile menu, manual photograph stack, keyboard-operated evidence viewer, navigation state and optional motion. Critical document-transition setup lives in each page's head so it works before the enhancement script loads.
 - `PRODUCT.md` records content truth. `DESIGN.md` records implemented tokens. `assets/CREDITS.md` records current media and font provenance.
 - All links use project-relative paths. `.github/workflows/pages.yml` deploys only website files to GitHub Pages.
 

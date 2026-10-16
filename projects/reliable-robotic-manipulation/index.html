@@ -9,6 +9,21 @@
    Reliable robotic manipulation · Zhenghao YU
   </title>
   <link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+  <style>
+   @view-transition { navigation: auto; }
+   @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+  </style>
+  <script>
+   // Register before the first render, including when the main script loads slowly.
+   addEventListener('pageswap', event => event.viewTransition?.ready.catch(() => {}));
+   addEventListener('pagereveal', event => {
+    if (!event.viewTransition) return;
+    event.viewTransition.ready.catch(() => {});
+    document.documentElement.dataset.incomingTransition = 'true';
+    const settle = () => { delete document.documentElement.dataset.incomingTransition; };
+    event.viewTransition.finished.then(settle, settle);
+   });
+  </script>
   <link href="../../styles.css" rel="stylesheet"/>
   <link href="project.css" rel="stylesheet"/>
   <link href="../../layout-motion.css" rel="stylesheet"/>
