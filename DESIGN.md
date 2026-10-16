@@ -1,0 +1,303 @@
+---
+name: Zhenghao YU research portfolio
+description: A type-led personal research record grounded in inspectable experimental evidence.
+colors:
+  paper: "#fff"
+  surface: "#f4f4f2"
+  ink: "#1f2b4d"
+  muted: "#515d78"
+  accent: "#f7941d"
+  dark: "#10192d"
+  footer: "#e3e1dc"
+  dark-muted: "#c6cede"
+  dark-surface: "#1f2c44"
+  control-hover: "#e3e5e8"
+  video-black: "#000"
+typography:
+  display:
+    fontFamily: "Chivo, Arial, sans-serif"
+    fontSize: "clamp(64px, 8.7vw, 132px)"
+    fontWeight: 560
+    lineHeight: 1.06
+    letterSpacing: "-.025em"
+  headline:
+    fontFamily: "Chivo, Arial, sans-serif"
+    fontSize: "clamp(36px, 4vw, 58px)"
+    fontWeight: 550
+    lineHeight: 1.1
+    letterSpacing: "-.025em"
+  title:
+    fontFamily: "Chivo, Arial, sans-serif"
+    fontSize: "clamp(28px, 2.7vw, 40px)"
+    fontWeight: 550
+    lineHeight: 1.1
+    letterSpacing: "-.025em"
+  lead:
+    fontFamily: "Chivo, Arial, sans-serif"
+    fontSize: "clamp(21px, 2vw, 28px)"
+    fontWeight: 500
+    lineHeight: 1.35
+    letterSpacing: "-.02em"
+  body:
+    fontFamily: "Chivo, Arial, sans-serif"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: "normal"
+  label:
+    fontFamily: "Chivo, Arial, sans-serif"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: "normal"
+  publication-title:
+    fontFamily: "Chivo, Arial, sans-serif"
+    fontSize: "clamp(21px, 1.8vw, 27px)"
+    fontWeight: 550
+    lineHeight: 1.25
+    letterSpacing: "-.015em"
+  paper-title:
+    fontFamily: "Chivo, Arial, sans-serif"
+    fontSize: "16px"
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: "normal"
+  research-title:
+    fontFamily: "Chivo, Arial, sans-serif"
+    fontSize: "clamp(34px, 4.4vw, 64px)"
+    fontWeight: 550
+    lineHeight: 1.08
+    letterSpacing: "-.025em"
+rounded:
+  square: "0"
+spacing:
+  inline: "8px"
+  control: "12px"
+  compact: "16px"
+  inset: "20px"
+  stack: "24px"
+  gutter: "32px"
+  group: "48px"
+  column: "64px"
+  section: "144px"
+  page: "clamp(24px, 4vw, 64px)"
+components:
+  button:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    typography: "{typography.label}"
+    rounded: "{rounded.square}"
+    padding: "14px 20px"
+  button-hover:
+    backgroundColor: "{colors.dark}"
+    textColor: "{colors.paper}"
+  cv-link:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    typography: "{typography.label}"
+    rounded: "{rounded.square}"
+    padding: "12px"
+  text-link:
+    textColor: "{colors.ink}"
+    padding: "6px 0"
+  navigation-link:
+    textColor: "{colors.muted}"
+    typography: "{typography.label}"
+    padding: "4px 0"
+  navigation-current:
+    textColor: "{colors.ink}"
+  evidence-control:
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.square}"
+    padding: "12px 16px"
+  evidence-control-selected:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+  evidence-control-hover:
+    backgroundColor: "{colors.control-hover}"
+    textColor: "{colors.ink}"
+  disclosure:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.square}"
+    padding: "16px 20px"
+  disclosure-dark:
+    backgroundColor: "{colors.dark-surface}"
+    textColor: "{colors.paper}"
+  evidence-container:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.square}"
+    padding: "clamp(24px, 3vw, 44px)"
+  figure-surface:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.square}"
+    padding: "20px"
+  publication-record:
+    textColor: "{colors.ink}"
+    typography: "{typography.body}"
+  contact-field:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+---
+
+# Design System: Zhenghao YU research portfolio
+
+## Overview
+
+**Creative North Star: "The Open Research Record"**
+
+The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. White space and navy type establish a calm reading field; small orange marks identify interaction and emphasis. The portrait rail keeps identity and navigation available while the main column moves from introduction to evidence, publications, and background.
+
+This name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; no visual-comp fidelity or catalog quality-bar approval is asserted.
+
+**Key Characteristics:**
+
+- Type-led identity with a self-hosted Chivo variable font.
+- White and navy reading surfaces with restrained orange interaction marks.
+- Real Hong Kong, portrait, industrial, and scientific imagery.
+- Asymmetric editorial layouts rather than a repeated card grid.
+- Inspectable evidence, native disclosures, and manually controlled video.
+- Motion that introduces content once and respects reduced-motion settings.
+
+## Colors
+
+The palette combines cool navy text, warm near-white supporting fields, and a small warm accent. Frontmatter values are normative. The sidecar's eight-step OKLCH tonal ramps are generated previews, not additional implemented palette tokens.
+
+### Primary
+
+- **Research Navy — ink:** Main text, selected evidence controls, filled actions, and the contact field.
+- **Signal Orange — accent:** Current-navigation square, selected-text background, manuscript-link underlines, text-link hover underlines, and focus outlines within dark fields. Orange is an accent rather than a broad surface fill.
+
+### Neutral
+
+- **Paper — paper:** Page and rail background, reversed text, and white figure interiors.
+- **Soft Evidence Ground — surface:** Disclosures, evidence browser, scientific-image surrounds, and highlighted experience.
+- **Secondary Navy — muted:** Metadata, dates, captions, and inactive navigation.
+- **Simulation Night — dark:** Dark simulation project field and filled-action hover.
+- **Warm Footer — footer:** Closing copyright strip.
+- **Reversed Caption — dark-muted:** Supporting copy and captions inside the dark project field.
+- **Reversed Disclosure — dark-surface:** Disclosure surface inside the dark project field.
+- **Control Hover — control-hover:** Unselected evidence control on pointer hover.
+- **Video Black — video-black:** Native video field within the dark project.
+
+**The Accent Restraint Rule.** Reserve orange for small orientation, selection, underline, and focus details; the principal filled action remains navy.
+
+**The Focus Contrast Rule.** Light surfaces use the navy focus outline; contact and dark-project fields use the orange outline. Keep the visible outline outside the control rather than replacing it with a subtle color shift.
+
+## Typography
+
+**Display and Body Font:** Chivo, followed by Arial and the platform sans-serif fallback. The normal-style variable font is self-hosted at assets/fonts/chivo-variable.ttf with font-display: swap; its source supports weights 100–900.
+
+**Character:** One type family carries the whole hierarchy. Size, medium variable weights, tight heading tracking, and generous surrounding space distinguish identity, research titles, reading text, and metadata. Labels remain sentence case.
+
+### Hierarchy
+
+- **Display:** The two-line personal name uses the display token, with additional word spacing (.06em). Its masked lines retain bottom padding to preserve descenders.
+- **Headline:** Section headings and evidence-browser title use the headline token.
+- **Title:** Project titles use the title token, usually constrained to 20ch; the dark-project title is constrained to 17ch.
+- **Lead:** The hero positioning statement uses the lead token. Research-theme titles and figure subheads share the fluid size but use their own observed heading weights and line heights.
+- **Body:** Body text uses the body token and defaults to 70ch maximum width. The hero introduction narrows to 43ch.
+- **Label:** Navigation, dates, authors, captions, controls, and resource links use the label scale. Selected rail navigation increases to weight 700; text links use weight 550.
+- **Publication title:** A concise topic heading leads each publication. The full original paper title remains a separate, visible paragraph using the paper-title token, followed by authors, publication status, summary, and links.
+- **Research title:** The full manipulation-study title uses its dedicated fluid scale and a 25ch measure.
+
+Display overrides are intentional: above 1800px it becomes 144px; at 1150px and below it becomes 8.9vw; at 850px and below it uses clamp(58px, 11.4vw, 96px); at 600px and below it uses clamp(43px, 11.8vw, 72px) with line-height 1.15. Mobile project titles are 32px, publication topic headings 22px, and the full research title 34px with line-height 1.12.
+
+**The Two Titles Rule.** A short publication topic may aid scanning, but keep the original scholarly title visibly readable in the adjacent text block.
+
+## Layout
+
+Desktop uses a fixed left identity rail and a padded main column. The rail is 200px wide by default, 170px at 1150px and below, and 240px from 1800px. Main and footer offsets follow that width. The main container caps at 1700px, with the fluid page inset token; the inset becomes 32px below 1150px, 28px below 850px, and 20px below 600px.
+
+The homepage hero is a vertical composition with a large two-line name and a two-column bottom row (1fr / 1.05fr). Its height is at least min(790px, 100svh) on the default desktop layout. The city photograph follows as a wide 2.45-aspect crop; mobile changes it to 1.35. Figure crops apply only to photographs and contextual thumbnails. Scientific evidence remains contained and legible.
+
+Sections begin with 144px of space, reduced to 112px below 850px and 96px below 600px. Project features use asymmetric image/text columns and fluid 32–64px gaps. The first research figure is sticky at a 36px top offset on desktop and becomes static below 850px. The dark simulation project extends to the content column's outer edges using negative page insets.
+
+The evidence browser uses a 1.25fr / 1fr figure-and-copy split; below 1150px the figure moves above a two-column text region, and below 600px the copy becomes a simple stack. Publication rows use .68fr / 1fr columns. About uses 1.15fr / .8fr columns, research themes use two columns, and the desktop timeline separates date, position, and description. These arrangements collapse to one reading column on small screens. Photo pairings retain deliberate size differences. In the dark project above 600px, the title occupies the first row of the left column and its factual context sits directly beneath it; narrative and resources occupy the right column.
+
+At 850px and below the rail becomes a sticky top header with a compact portrait, identity, and a Menu control. The expanded navigation uses three columns, reduced to two below 600px; the CV and contact links appear beneath it. Without JavaScript, the mobile header is in normal flow and navigation stays visible. Anchor scrolling reserves 28px on desktop and 108px in the mobile-header layout.
+
+The manipulation detail page shares the rail, page insets, type, and surfaces. Its hero stacks the full title and video; a navy three-metric band follows. Two-column conclusions and scope layouts collapse below 1100px; method and evidence grids collapse below 600px.
+
+## Elevation & Depth
+
+The reading system is flat. White, soft-neutral, and navy fields, image scale, and whitespace provide hierarchy. There are no routine card shadows, gradients, decorative grids, or 3D effects in the implementation. The only box-shadow is a light structural shadow beneath the expanded mobile header.
+
+### Shadow Vocabulary
+
+- **Expanded mobile header:** 0 16px 32px #1f2b4d12. It appears only while the small-screen menu is open.
+
+**The Flat Evidence Rule.** Scientific figures and ordinary content containers rely on a tonal surround and spacing; do not add decorative elevation to the evidence.
+
+## Shapes
+
+Surfaces and controls use square corners. Photography and scientific graphics remain rectangular, with no ornamental clipping. The compact identity portrait is a 44×52px crop on desktop and 36×44px in the mobile header; the larger about portrait uses a 4:5 crop.
+
+The current navigation marker is a small 5px square. Native disclosures use a typographic plus/minus. Thin stroked inline SVG arrows accompany actions; the shared icon vocabulary uses a 1.5px stroke with round caps and joins.
+
+## Components
+
+### Filled actions and text links
+
+Filled actions use the button token, a square silhouette, an inline arrow, and a 16px icon gap. The rail CV action spans its available width and uses the more compact cv-link padding. Pointer hover changes filled actions to Simulation Night; press scales buttons and these action links to .97 over the observed short transition.
+
+Text links use a quiet inline arrow and no resting underline. On fine-pointer hover their text receives an orange 2px underline and the arrow shifts 2px right and up. Publication resource links retain their orange underline at rest.
+
+### Navigation and mobile header
+
+Default links use muted navy. Hover restores ink; current-location links use weight 700 and the orange square at the left. The active link follows section position, and the final item becomes current near the document bottom.
+
+Menu is a square, text-and-plus control with at least a 44px target height. Opening reveals navigation and rail actions and rotates the plus 45 degrees. Escape closes the menu and returns focus to the toggle; navigation closes after a link is chosen or when crossing into desktop width. The menu is a disclosure, not a modal.
+
+### Disclosures
+
+Soft-neutral surfaces use disclosure padding. Summary text is 14px and weight 500, with a minimum 24px internal summary height and a plus/minus aligned at the right. The global visible focus outline gains an 8px offset on summaries. Open body copy is 14px with line-height 1.65. Dark-project disclosures use the reversed surface and white text. The photograph-credit disclosure is deliberately unfilled and omits the plus/minus.
+
+### Evidence browser
+
+A quiet surface groups the introductory heading, evidence controls, a scientific figure, and its explanation. Controls are square, borderless, at least 44px high, and wrap when necessary. Selection reverses to paper text on navy; an unselected pointer hover uses the control-hover fill. Preserve a visible focus outline on both controls and the active panel.
+
+JavaScript assigns tab semantics and one tab stop to the active control. Left/Right wrap between views; Home/End select the first/last. Keyboard activation changes the view immediately. Pointer activation settles the panel from 6px below and .65 opacity over 220ms. Without JavaScript the selector is hidden and all three evidence panels remain readable.
+
+### Project and publication records
+
+Project records pair actual media with a topic heading, context, narrative, measured outcomes, links, and optional scope disclosure. The scientific feature uses a contained soft-neutral surround; the industrial feature uses two differently sized photographs; the simulation feature uses the dark field and a native video. Avoid flattening these distinct media into identical cards.
+
+Publication imagery sits in a fixed-height contained thumbnail field rather than cropping the scientific illustration. Topic headings and full paper titles have separate roles, as described under Typography. Metadata and authors remain smaller than the title and summary.
+
+### Research figures, video, and result band
+
+Detail-page figures use square neutral surrounds, contain the original scientific image, and keep captions adjacent. Grid thumbnails use a 1.45 aspect-ratio region with object-fit: contain; opening the image link exposes its source resolution. The metric band is a square navy field with three equal columns, becoming a vertical stack on mobile.
+
+Videos use native controls, preload none, a real recorded poster, and no autoplay. Keep the scope caption beside each recording. Do not substitute a decorative animation or 3D robot for experimental evidence.
+
+### Contact field
+
+A full-width navy closing field carries a large invitation, email, supporting links, and the oversized name. Email remains a direct mail link. The copy control appears only when the clipboard API is available; its success or fallback message has a reserved status line and polite live announcement. Reversed interactive items use the orange focus outline.
+
+### Motion and accessibility
+
+The two name lines rise from 105% below their masks over 800ms, staggered by 100ms. Observed figure entrances rise 16px from .75 opacity over 650ms; other observed text/content entrances rise 10px from .7 opacity over 480ms. Each intersection-triggered entrance runs once at a .12 visibility threshold. These transitions use cubic-bezier(.22, 1, .36, 1).
+
+State transitions remain short: arrow movement 180ms, action press 140ms, and surface/color changes 180ms. Reduced-motion preference disables the scripted reveals and evidence settling, makes CSS animations/transitions effectively immediate, and changes scrolling to automatic. Content is present before animation; reduced motion and no JavaScript retain the reading order.
+
+## Do's and Don'ts
+
+### Do:
+
+- **Do** use self-hosted Chivo and the documented size hierarchy, preserving readable body and metadata text.
+- **Do** use the fixed identity rail on desktop and the disclosed top navigation on small screens.
+- **Do** preserve navy focus outlines on light surfaces and orange outlines in the dark project and contact fields.
+- **Do** pair every scientific figure, metric, and recording with its visible scope and caption.
+- **Do** retain original paper titles as visible paragraphs below concise publication topic headings.
+- **Do** preserve native video controls, manual playback, and reduced-motion behavior.
+- **Do** use real portrait, Hong Kong, industrial, and scientific assets with their existing attribution and meaning.
+
+### Don't:
+
+- **Don't** expand orange into large decorative backgrounds or replace the navy primary action.
+- **Don't** turn the asymmetric project sequence into a repeated rounded-card grid.
+- **Don't** crop scientific evidence for a photographic effect or detach it from its experimental context.
+- **Don't** add gradients, decorative grids, 3D effects, synthetic evidence, or invented personal photographs.
+- **Don't** add routine card shadows; the existing shadow belongs to the expanded mobile header.
+- **Don't** make essential text, navigation, or evidence depend on JavaScript or entrance motion.

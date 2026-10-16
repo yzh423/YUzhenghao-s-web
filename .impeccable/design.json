@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T16:12:34Z",
+  "title": "Design System: Zhenghao YU research portfolio",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Soft Evidence Ground",
+        "tonalRamp": [
+          "oklch(15% 0.0026 106.45)",
+          "oklch(26% 0.0026 106.45)",
+          "oklch(38% 0.0026 106.45)",
+          "oklch(49% 0.0026 106.45)",
+          "oklch(61% 0.0026 106.45)",
+          "oklch(72% 0.0026 106.45)",
+          "oklch(84% 0.0026 106.45)",
+          "oklch(95% 0.0026 106.45)"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Research Navy",
+        "tonalRamp": [
+          "oklch(15% 0.0641 267.73)",
+          "oklch(26% 0.0641 267.73)",
+          "oklch(38% 0.0641 267.73)",
+          "oklch(49% 0.0641 267.73)",
+          "oklch(61% 0.0641 267.73)",
+          "oklch(72% 0.0641 267.73)",
+          "oklch(84% 0.0641 267.73)",
+          "oklch(95% 0.0641 267.73)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Secondary Navy",
+        "tonalRamp": [
+          "oklch(15% 0.0463 266.01)",
+          "oklch(26% 0.0463 266.01)",
+          "oklch(38% 0.0463 266.01)",
+          "oklch(49% 0.0463 266.01)",
+          "oklch(61% 0.0463 266.01)",
+          "oklch(72% 0.0463 266.01)",
+          "oklch(84% 0.0463 266.01)",
+          "oklch(95% 0.0463 266.01)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Signal Orange",
+        "tonalRamp": [
+          "oklch(15% 0.1652 62.85)",
+          "oklch(26% 0.1652 62.85)",
+          "oklch(38% 0.1652 62.85)",
+          "oklch(49% 0.1652 62.85)",
+          "oklch(61% 0.1652 62.85)",
+          "oklch(72% 0.1652 62.85)",
+          "oklch(84% 0.1652 62.85)",
+          "oklch(95% 0.1652 62.85)"
+        ]
+      },
+      "dark": {
+        "role": "neutral",
+        "displayName": "Simulation Night",
+        "tonalRamp": [
+          "oklch(15% 0.0418 264.78)",
+          "oklch(26% 0.0418 264.78)",
+          "oklch(38% 0.0418 264.78)",
+          "oklch(49% 0.0418 264.78)",
+          "oklch(61% 0.0418 264.78)",
+          "oklch(72% 0.0418 264.78)",
+          "oklch(84% 0.0418 264.78)",
+          "oklch(95% 0.0418 264.78)"
+        ]
+      },
+      "footer": {
+        "role": "neutral",
+        "displayName": "Warm Footer",
+        "tonalRamp": [
+          "oklch(15% 0.0071 88.65)",
+          "oklch(26% 0.0071 88.65)",
+          "oklch(38% 0.0071 88.65)",
+          "oklch(49% 0.0071 88.65)",
+          "oklch(61% 0.0071 88.65)",
+          "oklch(72% 0.0071 88.65)",
+          "oklch(84% 0.0071 88.65)",
+          "oklch(95% 0.0071 88.65)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Reversed Caption",
+        "tonalRamp": [
+          "oklch(15% 0.0239 264.44)",
+          "oklch(26% 0.0239 264.44)",
+          "oklch(38% 0.0239 264.44)",
+          "oklch(49% 0.0239 264.44)",
+          "oklch(61% 0.0239 264.44)",
+          "oklch(72% 0.0239 264.44)",
+          "oklch(84% 0.0239 264.44)",
+          "oklch(95% 0.0239 264.44)"
+        ]
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "Reversed Disclosure",
+        "tonalRamp": [
+          "oklch(15% 0.0476 262.09)",
+          "oklch(26% 0.0476 262.09)",
+          "oklch(38% 0.0476 262.09)",
+          "oklch(49% 0.0476 262.09)",
+          "oklch(61% 0.0476 262.09)",
+          "oklch(72% 0.0476 262.09)",
+          "oklch(84% 0.0476 262.09)",
+          "oklch(95% 0.0476 262.09)"
+        ]
+      },
+      "control-hover": {
+        "role": "neutral",
+        "displayName": "Control Hover",
+        "tonalRamp": [
+          "oklch(15% 0.0046 258.33)",
+          "oklch(26% 0.0046 258.33)",
+          "oklch(38% 0.0046 258.33)",
+          "oklch(49% 0.0046 258.33)",
+          "oklch(61% 0.0046 258.33)",
+          "oklch(72% 0.0046 258.33)",
+          "oklch(84% 0.0046 258.33)",
+          "oklch(95% 0.0046 258.33)"
+        ]
+      },
+      "video-black": {
+        "role": "neutral",
+        "displayName": "Video Black",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Personal name",
+        "purpose": "Two masked lines introduce Zhenghao YU and Daniel; responsive sizes are documented in DESIGN.md."
+      },
+      "headline": {
+        "displayName": "Section headline",
+        "purpose": "Main section headings and the evidence-browser introduction."
+      },
+      "title": {
+        "displayName": "Project title",
+        "purpose": "Project topic headings in asymmetric editorial features."
+      },
+      "lead": {
+        "displayName": "Positioning lead",
+        "purpose": "The introductory research statement; related headings share the fluid size with their observed component styling."
+      },
+      "body": {
+        "displayName": "Reading text",
+        "purpose": "Main narrative with a default 70ch maximum measure."
+      },
+      "label": {
+        "displayName": "Metadata and controls",
+        "purpose": "Dates, captions, resource links, authors, and navigation."
+      },
+      "publication-title": {
+        "displayName": "Publication topic",
+        "purpose": "A concise topic heading for scanning the scholarly record."
+      },
+      "paper-title": {
+        "displayName": "Original paper title",
+        "purpose": "Full scholarly title remains a visible paragraph below the publication topic."
+      },
+      "research-title": {
+        "displayName": "Full study title",
+        "purpose": "The full manipulation-study heading, limited to 25ch."
+      }
+    },
+    "shadows": [
+      {
+        "name": "mobile-menu-open",
+        "value": "0 16px 32px #1f2b4d12",
+        "purpose": "Structural separation beneath the expanded header at 850px and below. All ordinary content surfaces are flat."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.22,1,.36,1)",
+        "purpose": "Implemented easing for name, content, image, panel, icon, and action-transform motion."
+      },
+      {
+        "name": "name-reveal",
+        "value": "800ms; stagger 100ms; translateY(105%) to 0",
+        "purpose": "Once on load, one masked animation for each personal-name line. Skipped for reduced motion."
+      },
+      {
+        "name": "figure-entrance",
+        "value": "650ms; translateY(16px) and opacity .75 to 0 and 1",
+        "purpose": "Observed figure elements enter once at IntersectionObserver threshold .12."
+      },
+      {
+        "name": "content-entrance",
+        "value": "480ms; translateY(10px) and opacity .7 to 0 and 1",
+        "purpose": "Observed non-figure content enters once at threshold .12."
+      },
+      {
+        "name": "evidence-pointer-settle",
+        "value": "220ms; translateY(6px) and opacity .65 to 0 and 1",
+        "purpose": "Pointer-triggered evidence changes only; keyboard changes and reduced-motion users receive an immediate result."
+      },
+      {
+        "name": "press",
+        "value": "140ms; scale(.97)",
+        "purpose": "Button, filled-link, and CV-link press feedback."
+      },
+      {
+        "name": "arrow-hover",
+        "value": "180ms; translate(2px,-2px)",
+        "purpose": "Fine-pointer hover on linked inline arrows."
+      },
+      {
+        "name": "color-state",
+        "value": "180ms ease",
+        "purpose": "Navigation color, filled-action surface, and evidence-control state changes."
+      },
+      {
+        "name": "reduced-motion",
+        "value": ".01ms CSS animation/transition duration; scroll-behavior:auto; scripted entrances skipped",
+        "purpose": "Respects prefers-reduced-motion:reduce; no evidence animation or name reveal is started."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "min-wide-desktop",
+        "value": "1800px"
+      },
+      {
+        "name": "max-compact-desktop",
+        "value": "1150px"
+      },
+      {
+        "name": "max-detail-single-column",
+        "value": "1100px"
+      },
+      {
+        "name": "max-mobile-header",
+        "value": "850px"
+      },
+      {
+        "name": "max-single-reading-column",
+        "value": "600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Filled research action",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "Square navy action for the CV download and manipulation-study evidence jump.",
+      "html": "<a class=\"ds-button\" href=\"#evidence\">See the evidence <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 19 19 5M5 5h14v14\"></path></svg></a>",
+      "css": ".ds-button{font-family:Chivo,Arial,sans-serif;display:inline-flex;align-items:center;gap:16px;padding:14px 20px;background:var(--ink,#1f2b4d);color:var(--paper,#fff);text-decoration:none;font-size:14px;line-height:1.6;transition:transform 140ms var(--ease-out,cubic-bezier(.22,1,.36,1)),background-color 180ms ease;}.ds-button svg{width:20px;height:20px;flex-shrink:0;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}.ds-button svg{margin-left:6px;transition:transform 180ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-button:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}.ds-button:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-button:hover{background:var(--dark,#10192d);}.ds-button:hover svg{transform:translate(2px,-2px);}}@media(prefers-reduced-motion:reduce){.ds-button,.ds-button svg{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Rail CV action",
+      "kind": "button",
+      "refersTo": "cv-link",
+      "description": "Compact, full-width download action anchored near the base of the identity rail.",
+      "html": "<a class=\"ds-cv\" href=\"assets/Zhenghao_Yu_Resume.pdf\" download>Download CV <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 19 19 5M5 5h14v14\"></path></svg></a>",
+      "css": ".ds-cv{font-family:Chivo,Arial,sans-serif;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px;background:var(--ink,#1f2b4d);color:var(--paper,#fff);font-size:14px;line-height:1.6;text-decoration:none;transition:transform 140ms var(--ease-out,cubic-bezier(.22,1,.36,1)),background-color 180ms ease;}.ds-cv svg{width:20px;height:20px;flex-shrink:0;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}.ds-cv svg{width:17px;height:17px;margin-left:6px;transition:transform 180ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-cv:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}.ds-cv:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-cv:hover{background:var(--dark,#10192d);}.ds-cv:hover svg{transform:translate(2px,-2px);}}@media(prefers-reduced-motion:reduce){.ds-cv,.ds-cv svg{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Text action",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Understated text-and-arrow action; an orange underline appears on fine-pointer hover.",
+      "html": "<a class=\"ds-text-link\" href=\"#projects\">Explore selected work <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 19 19 5M5 5h14v14\"></path></svg></a>",
+      "css": ".ds-text-link{font-family:Chivo,Arial,sans-serif;display:inline-flex;align-items:center;gap:4px;padding:6px 0;color:var(--ink,#1f2b4d);font-size:16px;font-weight:550;line-height:1.6;text-decoration:none;text-underline-offset:.25em;}.ds-text-link svg{width:20px;height:20px;flex-shrink:0;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}.ds-text-link svg{margin-left:6px;transition:transform 180ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-text-link:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}@media(hover:hover) and (pointer:fine){.ds-text-link:hover{text-decoration:underline;text-decoration-color:var(--accent,#f7941d);text-decoration-thickness:2px;}.ds-text-link:hover svg{transform:translate(2px,-2px);}}@media(prefers-reduced-motion:reduce){.ds-text-link svg{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Section navigation",
+      "kind": "nav",
+      "refersTo": "navigation-link",
+      "description": "Muted vertical links, with a navy current link and a small orange location square.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary navigation\"><a href=\"#projects\" aria-current=\"location\">Selected work</a><a href=\"#publications\">Publications</a><a href=\"#about\">About me</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav{font-family:Chivo,Arial,sans-serif;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding-left:12px;}.ds-nav a{position:relative;padding:4px 0;color:var(--muted,#515d78);font-size:14px;line-height:1.6;text-decoration:none;transition:color 180ms ease;}.ds-nav a[aria-current]{color:var(--ink,#1f2b4d);font-weight:700;}.ds-nav a[aria-current]:before{content:'';position:absolute;left:-12px;top:13px;width:5px;height:5px;background:var(--accent,#f7941d);}.ds-nav a:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}@media(hover:hover) and (pointer:fine){.ds-nav a:hover{color:var(--ink,#1f2b4d);}}@media(prefers-reduced-motion:reduce){.ds-nav a{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Evidence controls",
+      "kind": "custom",
+      "refersTo": "evidence-control",
+      "description": "The implemented three-view selector, shown with Tracking selected; the site script supplies tab keyboard behavior.",
+      "html": "<div class=\"ds-evidence-controls\" role=\"tablist\" aria-label=\"Choose experimental evidence\"><button type=\"button\" role=\"tab\" aria-selected=\"true\">Tracking</button><button type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Time-step sensitivity</button><button type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Arrival &amp; effort</button></div>",
+      "css": ".ds-evidence-controls{font-family:Chivo,Arial,sans-serif;display:flex;gap:8px;flex-wrap:wrap;margin:32px 0;background:var(--surface,#f4f4f2);}.ds-evidence-controls button{font-family:Chivo,Arial,sans-serif;padding:12px 16px;min-height:44px;border:0;border-radius:0;background:transparent;color:var(--ink,#1f2b4d);font-size:14px;line-height:1.6;cursor:pointer;transition:background-color 180ms ease,color 180ms ease,transform 140ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-evidence-controls button[aria-selected=true]{background:var(--ink,#1f2b4d);color:var(--paper,#fff);}.ds-evidence-controls button:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}.ds-evidence-controls button:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-evidence-controls button:hover:not([aria-selected=true]){background:var(--control-hover,#e3e5e8);}}@media(prefers-reduced-motion:reduce){.ds-evidence-controls button{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Native scope disclosure",
+      "kind": "custom",
+      "refersTo": "disclosure",
+      "description": "Native details/summary preserves inspectable scope and an operable no-JavaScript open state.",
+      "html": "<details class=\"ds-disclosure\"><summary>Inside the dataset</summary><p>The collection covers 33 tasks in 23 archives, including 13 UMI collections with 58 episodes and 42,223 frames. It keeps the original source files and provenance alongside task notes and LeRobot v3 data.</p></details>",
+      "css": ".ds-disclosure{font-family:Chivo,Arial,sans-serif;padding:16px 20px;background:var(--surface,#f4f4f2);color:var(--ink,#1f2b4d);}.ds-disclosure summary{display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:24px;font-size:14px;line-height:1.6;font-weight:500;list-style:none;cursor:pointer;}.ds-disclosure summary::-webkit-details-marker{display:none;}.ds-disclosure summary:after{content:'+';font-size:21px;line-height:1;font-weight:400;}.ds-disclosure[open]>summary:after{content:'−';}.ds-disclosure summary:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;outline-offset:8px;}.ds-disclosure p{max-width:70ch;margin:18px 0 0;font-size:14px;line-height:1.65;}"
+    },
+    {
+      "name": "Evidence explanation surface",
+      "kind": "card",
+      "refersTo": "evidence-container",
+      "description": "The text portion of an actual evidence panel; original charts remain adjacent in the implemented page.",
+      "html": "<section class=\"ds-evidence\"><h4>Change the clock.<br>Test the result.</h4><p>All 20 plant-only refinement pairs stayed within tolerance. When both the plant and feedback period were refined, 14/20 pairs were stable and 6/20 showed sensitivity.</p><p class=\"ds-evidence-caption\">60/60 simulation runs and 40/40 comparisons completed. Four fixed controllers, five prespecified cases, three time profiles.</p></section>",
+      "css": ".ds-evidence{font-family:Chivo,Arial,sans-serif;background:var(--surface,#f4f4f2);color:var(--ink,#1f2b4d);padding:clamp(24px,3vw,44px);}.ds-evidence h4{margin:0 0 24px;font-size:clamp(21px,2vw,28px);font-weight:550;line-height:1.1;letter-spacing:-.025em;text-wrap:balance;}.ds-evidence p{max-width:70ch;margin:0;font-size:14px;line-height:1.7;}.ds-evidence .ds-evidence-caption{margin-top:20px;color:var(--muted,#515d78);}"
+    },
+    {
+      "name": "Publication text record",
+      "kind": "custom",
+      "refersTo": "publication-record",
+      "description": "A concise topic heading and fully visible original paper title, followed by authors, status, and an underlined manuscript link.",
+      "html": "<article class=\"ds-publication\"><h3>Coordinated ramp merging</h3><p class=\"ds-paper-title\">Game-Diffusion-based Multi-Agent Learning of Ramp Merging Coordination for Connected and Automated Vehicles</p><p class=\"ds-authors\"><strong>Zhenghao Yu</strong>, Chaoyi Chen, Nuo Lei, Bingbing Li, Boli Chen, and Hao Zhang</p><p class=\"ds-status\">Accepted / In Press / IEEE OJITS / 2026</p><a href=\"papers/game-diff-marl-cav-ramp-merging.pdf\">Read manuscript</a></article>",
+      "css": ".ds-publication{font-family:Chivo,Arial,sans-serif;color:var(--ink,#1f2b4d);font-size:16px;line-height:1.6;}.ds-publication h3{margin:0 0 16px;font-size:clamp(21px,1.8vw,27px);line-height:1.25;font-weight:550;letter-spacing:-.015em;text-wrap:pretty;}.ds-publication p{max-width:70ch;}.ds-publication .ds-paper-title{margin:0 0 16px;font-size:16px;font-weight:500;line-height:1.5;text-wrap:pretty;}.ds-publication .ds-authors{margin:0 0 16px;font-size:14px;}.ds-publication .ds-status{margin:0 0 16px;font-size:14px;color:var(--muted,#515d78);}.ds-publication a{display:inline-block;margin-top:2px;color:inherit;font-size:14px;font-weight:500;text-decoration:underline;text-decoration-color:var(--accent,#f7941d);text-decoration-thickness:2px;text-underline-offset:.25em;}.ds-publication a:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}"
+    },
+    {
+      "name": "Reversed contact link",
+      "kind": "custom",
+      "refersTo": "contact-field",
+      "description": "Direct email on the navy contact field with an orange visible focus outline.",
+      "html": "<div class=\"ds-contact\"><a class=\"ds-email\" href=\"mailto:Zhenghao@connect.hku.hk\">Zhenghao@connect.hku.hk <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 19 19 5M5 5h14v14\"></path></svg></a></div>",
+      "css": ".ds-contact{font-family:Chivo,Arial,sans-serif;padding:80px var(--space,clamp(24px,4vw,64px)) 0;background:var(--ink,#1f2b4d);color:var(--paper,#fff);}.ds-email{display:inline-flex;align-items:center;gap:12px;max-width:100%;font-size:clamp(18px,2.2vw,30px);line-height:1.6;letter-spacing:-.02em;word-break:break-word;text-decoration:none;color:inherit;}.ds-email svg{width:20px;height:20px;flex-shrink:0;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}.ds-email svg{width:26px;height:26px;margin-left:6px;transition:transform 180ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-email:focus-visible{outline:3px solid var(--accent,#f7941d);outline-offset:5px;}@media(hover:hover) and (pointer:fine){.ds-email:hover svg{transform:translate(2px,-2px);}}@media(max-width:600px){.ds-contact{padding:56px 20px 0;}.ds-email{font-size:clamp(15px,4.7vw,24px);gap:4px;}.ds-email svg{width:20px;height:20px;margin-left:4px;}}@media(prefers-reduced-motion:reduce){.ds-email svg{transition-duration:.01ms;}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Open Research Record",
+    "overview": "The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. White space and navy type establish a calm reading field; small orange marks identify interaction and emphasis. The portrait rail keeps identity and navigation available while the main column moves from introduction to evidence, publications, and background.\n\nThis name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; no visual-comp fidelity or catalog quality-bar approval is asserted.",
+    "keyCharacteristics": [
+      "Type-led identity with a self-hosted Chivo variable font.",
+      "White and navy reading surfaces with restrained orange interaction marks.",
+      "Real Hong Kong, portrait, industrial, and scientific imagery.",
+      "Asymmetric editorial layouts rather than a repeated card grid.",
+      "Inspectable evidence, native disclosures, and manually controlled video.",
+      "Motion that introduces content once and respects reduced-motion settings."
+    ],
+    "rules": [
+      {
+        "name": "The Accent Restraint Rule",
+        "body": "Reserve orange for small orientation, selection, underline, and focus details; the principal filled action remains navy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Focus Contrast Rule",
+        "body": "Light surfaces use the navy focus outline; contact and dark-project fields use the orange outline. Keep the visible outline outside the control rather than replacing it with a subtle color shift.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Titles Rule",
+        "body": "A short publication topic may aid scanning, but keep the original scholarly title visibly readable in the adjacent text block.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Evidence Rule",
+        "body": "Scientific figures and ordinary content containers rely on a tonal surround and spacing; do not add decorative elevation to the evidence.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use self-hosted Chivo and the documented size hierarchy, preserving readable body and metadata text.",
+      "**Do** use the fixed identity rail on desktop and the disclosed top navigation on small screens.",
+      "**Do** preserve navy focus outlines on light surfaces and orange outlines in the dark project and contact fields.",
+      "**Do** pair every scientific figure, metric, and recording with its visible scope and caption.",
+      "**Do** retain original paper titles as visible paragraphs below concise publication topic headings.",
+      "**Do** preserve native video controls, manual playback, and reduced-motion behavior.",
+      "**Do** use real portrait, Hong Kong, industrial, and scientific assets with their existing attribution and meaning."
+    ],
+    "donts": [
+      "**Don't** expand orange into large decorative backgrounds or replace the navy primary action.",
+      "**Don't** turn the asymmetric project sequence into a repeated rounded-card grid.",
+      "**Don't** crop scientific evidence for a photographic effect or detach it from its experimental context.",
+      "**Don't** add gradients, decorative grids, 3D effects, synthetic evidence, or invented personal photographs.",
+      "**Don't** add routine card shadows; the existing shadow belongs to the expanded mobile header.",
+      "**Don't** make essential text, navigation, or evidence depend on JavaScript or entrance motion."
+    ]
+  }
+}

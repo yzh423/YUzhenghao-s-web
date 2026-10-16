@@ -1,0 +1,12 @@
+{
+  "name": "zhenghao-yu-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "check": "node scripts/check-site.mjs",
+    "test:browser": "node scripts/browser-qa.mjs"
+  },
+  "devDependencies": { "playwright": "1.62.1" }
+}
