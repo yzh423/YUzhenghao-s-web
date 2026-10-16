@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T16:12:34Z",
+  "generatedAt": "2026-10-16T16:36:10Z",
   "title": "Design System: Zhenghao YU research portfolio",
   "extensions": {
     "colorMeta": {
@@ -162,7 +162,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Personal name",
-        "purpose": "Two masked lines introduce Zhenghao YU and Daniel; responsive sizes are documented in DESIGN.md."
+        "purpose": "The two-line personal name shares the opening grid with a real campus photograph; the desktop size caps at 112px and responsive sizes are documented in DESIGN.md."
       },
       "headline": {
         "displayName": "Section headline",
@@ -174,7 +174,7 @@
       },
       "lead": {
         "displayName": "Positioning lead",
-        "purpose": "The introductory research statement; related headings share the fluid size with their observed component styling."
+        "purpose": "Detail-page introductory text; related research-theme and figure headings share the fluid size with their observed component styling."
       },
       "body": {
         "displayName": "Reading text",
@@ -195,40 +195,79 @@
       "research-title": {
         "displayName": "Full study title",
         "purpose": "The full manipulation-study heading, limited to 25ch."
+      },
+      "positioning": {
+        "displayName": "Hero research statement",
+        "purpose": "The homepage positioning statement aligns above the introduction beneath Daniel, with a quieter size and relaxed heading tracking."
       }
     },
     "shadows": [
       {
-        "name": "mobile-menu-open",
-        "value": "0 16px 32px #1f2b4d12",
-        "purpose": "Structural separation beneath the expanded header at 850px and below. All ordinary content surfaces are flat."
+        "name": "mobile-navigation-drawer",
+        "value": "0 20px 28px #1f2b4d0d",
+        "purpose": "Structural separation beneath the anchored mobile navigation drawer at 850px and below; the dismissible backdrop is #1f2b4d24. Ordinary content surfaces remain flat."
       }
     ],
     "motion": [
       {
         "name": "ease-out",
         "value": "cubic-bezier(.22,1,.36,1)",
-        "purpose": "Implemented easing for name, content, image, panel, icon, and action-transform motion."
+        "purpose": "Implemented easing for the bounded hero entrance, drawer, marker, native reading transition, disclosure body, photo hover, icons and action transforms."
       },
       {
-        "name": "name-reveal",
-        "value": "800ms; stagger 100ms; translateY(105%) to 0",
-        "purpose": "Once on load, one masked animation for each personal-name line. Skipped for reduced motion."
+        "name": "name-entrance",
+        "value": "700ms; second-line delay 70ms; translateY(28%) and opacity .3 to 0 and 1",
+        "purpose": "Once on load for each personal-name line; the second line ends at 770ms. Skipped for reduced motion and cancelled when a native page reveal supplies continuity."
       },
       {
-        "name": "figure-entrance",
-        "value": "650ms; translateY(16px) and opacity .75 to 0 and 1",
-        "purpose": "Observed figure elements enter once at IntersectionObserver threshold .12."
+        "name": "hero-photo-entrance",
+        "value": "680ms; delay 100ms; clip-path inset(0 0 18% 0), translateY(12px), opacity .6 to inset(0), 0, 1",
+        "purpose": "The campus photograph opens beside Daniel; this is the longest hero entrance at 780ms total. Content remains visible in the source."
       },
       {
-        "name": "content-entrance",
-        "value": "480ms; translateY(10px) and opacity .7 to 0 and 1",
-        "purpose": "Observed non-figure content enters once at threshold .12."
+        "name": "mobile-menu-open",
+        "value": "drawer 220ms from translateY(-10px) and opacity 0; backdrop 180ms fade",
+        "purpose": "Pointer opening of the anchored overlay without moving the document. Repeated toggles cancel prior animations; keyboard and reduced motion settle immediately."
       },
       {
-        "name": "evidence-pointer-settle",
-        "value": "220ms; translateY(6px) and opacity .65 to 0 and 1",
-        "purpose": "Pointer-triggered evidence changes only; keyboard changes and reduced-motion users receive an immediate result."
+        "name": "mobile-menu-close",
+        "value": "100ms opacity fade for drawer and backdrop",
+        "purpose": "Faster pointer dismissal; closed controls become inert immediately. Escape, focus departure, link selection and keyboard activation settle directly."
+      },
+      {
+        "name": "navigation-marker",
+        "value": "220ms transform",
+        "purpose": "The single 6px orange marker travels to the current section link. Keyboard input moves it immediately."
+      },
+      {
+        "name": "evidence-native-transition",
+        "value": "outgoing 100ms opacity fade; incoming 240ms from translateY(8px) and opacity 0",
+        "purpose": "Pointer-triggered native View Transition on the evidence browser. Rapid requests skip obsolete snapshots and apply the latest selection; keyboard and reduced motion are immediate."
+      },
+      {
+        "name": "evidence-fallback",
+        "value": "180ms; translateY(4px) and opacity .6 to 0 and 1",
+        "purpose": "Pointer-triggered new-panel settling when document.startViewTransition is unavailable; the selected state is applied before this optional animation."
+      },
+      {
+        "name": "page-navigation",
+        "value": "outgoing 100ms opacity fade; incoming 220ms from translateY(8px) and opacity 0; rail animation none",
+        "purpose": "Progressive same-origin cross-document View Transitions preserve the identity rail. Unsupported browsers navigate normally; keyboard navigation and reduced motion skip the transition."
+      },
+      {
+        "name": "disclosure-open",
+        "value": "180ms; translateY(4px) and opacity .4 to 0 and 1",
+        "purpose": "Pointer opening settles newly visible native disclosure body content. Keyboard and reduced-motion openings are immediate."
+      },
+      {
+        "name": "plus-rotation",
+        "value": "160ms; rotate(45deg) when open",
+        "purpose": "Menu and ordinary disclosure state feedback; keyboard input disables the CSS transition. Photograph credits omit the disclosure plus."
+      },
+      {
+        "name": "hero-photo-hover",
+        "value": "700ms; scale(1.025)",
+        "purpose": "Fine-pointer hover within the clipped photographic frame; reduced motion makes it effectively immediate."
       },
       {
         "name": "press",
@@ -247,8 +286,8 @@
       },
       {
         "name": "reduced-motion",
-        "value": ".01ms CSS animation/transition duration; scroll-behavior:auto; scripted entrances skipped",
-        "purpose": "Respects prefers-reduced-motion:reduce; no evidence animation or name reveal is started."
+        "value": ".01ms CSS animation/transition duration; scroll-behavior:auto; native View Transitions disabled; scripted motion skipped or cancelled",
+        "purpose": "Respects prefers-reduced-motion:reduce, including changes during an interaction. Content is visible by default; there are no repeated scroll reveals."
       }
     ],
     "breakpoints": [
@@ -303,15 +342,15 @@
       "name": "Section navigation",
       "kind": "nav",
       "refersTo": "navigation-link",
-      "description": "Muted vertical links, with a navy current link and a small orange location square.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Primary navigation\"><a href=\"#projects\" aria-current=\"location\">Selected work</a><a href=\"#publications\">Publications</a><a href=\"#about\">About me</a><a href=\"#contact\">Contact</a></nav>",
-      "css": ".ds-nav{font-family:Chivo,Arial,sans-serif;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding-left:12px;}.ds-nav a{position:relative;padding:4px 0;color:var(--muted,#515d78);font-size:14px;line-height:1.6;text-decoration:none;transition:color 180ms ease;}.ds-nav a[aria-current]{color:var(--ink,#1f2b4d);font-weight:700;}.ds-nav a[aria-current]:before{content:'';position:absolute;left:-12px;top:13px;width:5px;height:5px;background:var(--accent,#f7941d);}.ds-nav a:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}@media(hover:hover) and (pointer:fine){.ds-nav a:hover{color:var(--ink,#1f2b4d);}}@media(prefers-reduced-motion:reduce){.ds-nav a{transition-duration:.01ms;}}"
+      "description": "Muted section links with a navy current link and a single 6px orange square; the site script moves the marker over 220ms and settles it immediately for keyboard input.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary navigation\"><a href=\"#projects\" aria-current=\"location\">Selected work</a><a href=\"#publications\">Publications</a><a href=\"#about\">About me</a><a href=\"#contact\">Contact</a><span class=\"ds-nav-indicator\" aria-hidden=\"true\"></span></nav>",
+      "css": ".ds-nav{font-family:Chivo,Arial,sans-serif;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding-left:12px;}.ds-nav a{position:relative;padding:4px 0;color:var(--muted,#515d78);font-size:14px;line-height:1.6;text-decoration:none;transition:color 180ms ease;}.ds-nav a[aria-current]{color:var(--ink,#1f2b4d);font-weight:700;}.ds-nav-indicator{position:absolute;inset:0 auto auto 0;width:6px;height:6px;background:var(--accent,#f7941d);pointer-events:none;transform:translate3d(0,12.2px,0);transition:transform 220ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-nav a:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}@media(hover:hover) and (pointer:fine){.ds-nav a:hover{color:var(--ink,#1f2b4d);}}@media(prefers-reduced-motion:reduce){.ds-nav a,.ds-nav-indicator{transition-duration:.01ms;}}"
     },
     {
       "name": "Evidence controls",
       "kind": "custom",
       "refersTo": "evidence-control",
-      "description": "The implemented three-view selector, shown with Tracking selected; the site script supplies tab keyboard behavior.",
+      "description": "The implemented three-view selector, shown with Tracking selected; the site script supplies tab keyboard behavior and a progressive native View Transition with an optional WAAPI fallback.",
       "html": "<div class=\"ds-evidence-controls\" role=\"tablist\" aria-label=\"Choose experimental evidence\"><button type=\"button\" role=\"tab\" aria-selected=\"true\">Tracking</button><button type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Time-step sensitivity</button><button type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Arrival &amp; effort</button></div>",
       "css": ".ds-evidence-controls{font-family:Chivo,Arial,sans-serif;display:flex;gap:8px;flex-wrap:wrap;margin:32px 0;background:var(--surface,#f4f4f2);}.ds-evidence-controls button{font-family:Chivo,Arial,sans-serif;padding:12px 16px;min-height:44px;border:0;border-radius:0;background:transparent;color:var(--ink,#1f2b4d);font-size:14px;line-height:1.6;cursor:pointer;transition:background-color 180ms ease,color 180ms ease,transform 140ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-evidence-controls button[aria-selected=true]{background:var(--ink,#1f2b4d);color:var(--paper,#fff);}.ds-evidence-controls button:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}.ds-evidence-controls button:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-evidence-controls button:hover:not([aria-selected=true]){background:var(--control-hover,#e3e5e8);}}@media(prefers-reduced-motion:reduce){.ds-evidence-controls button{transition-duration:.01ms;}}"
     },
@@ -319,9 +358,9 @@
       "name": "Native scope disclosure",
       "kind": "custom",
       "refersTo": "disclosure",
-      "description": "Native details/summary preserves inspectable scope and an operable no-JavaScript open state.",
+      "description": "Native details/summary preserves inspectable scope and an operable no-JavaScript state, with a plus that rotates when open; the site script adds a short pointer-only body entrance.",
       "html": "<details class=\"ds-disclosure\"><summary>Inside the dataset</summary><p>The collection covers 33 tasks in 23 archives, including 13 UMI collections with 58 episodes and 42,223 frames. It keeps the original source files and provenance alongside task notes and LeRobot v3 data.</p></details>",
-      "css": ".ds-disclosure{font-family:Chivo,Arial,sans-serif;padding:16px 20px;background:var(--surface,#f4f4f2);color:var(--ink,#1f2b4d);}.ds-disclosure summary{display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:24px;font-size:14px;line-height:1.6;font-weight:500;list-style:none;cursor:pointer;}.ds-disclosure summary::-webkit-details-marker{display:none;}.ds-disclosure summary:after{content:'+';font-size:21px;line-height:1;font-weight:400;}.ds-disclosure[open]>summary:after{content:'−';}.ds-disclosure summary:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;outline-offset:8px;}.ds-disclosure p{max-width:70ch;margin:18px 0 0;font-size:14px;line-height:1.65;}"
+      "css": ".ds-disclosure{font-family:Chivo,Arial,sans-serif;padding:16px 20px;background:var(--surface,#f4f4f2);color:var(--ink,#1f2b4d);}.ds-disclosure summary{display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:24px;font-size:14px;line-height:1.6;font-weight:500;list-style:none;cursor:pointer;}.ds-disclosure summary::-webkit-details-marker{display:none;}.ds-disclosure summary:after{content:'+';font-size:21px;line-height:1;font-weight:400;transition:transform 160ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-disclosure[open]>summary:after{transform:rotate(45deg);}.ds-disclosure summary:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;outline-offset:8px;}.ds-disclosure p{max-width:70ch;margin:18px 0 0;font-size:14px;line-height:1.65;}@media(prefers-reduced-motion:reduce){.ds-disclosure summary:after{transition-duration:.01ms;}}"
     },
     {
       "name": "Evidence explanation surface",
@@ -350,14 +389,14 @@
   ],
   "narrative": {
     "northStar": "The Open Research Record",
-    "overview": "The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. White space and navy type establish a calm reading field; small orange marks identify interaction and emphasis. The portrait rail keeps identity and navigation available while the main column moves from introduction to evidence, publications, and background.\n\nThis name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; no visual-comp fidelity or catalog quality-bar approval is asserted.",
+    "overview": "The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. White space and navy type establish a calm reading field; small orange marks identify interaction and emphasis. The portrait rail keeps identity and navigation available while the main column moves from introduction to evidence, publications, and background.\n\nThis name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, layout-motion.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; the opening composition and motion are refined in docs/hero-motion-refinement.md. No visual-comp fidelity or catalog quality-bar approval is asserted.",
     "keyCharacteristics": [
       "Type-led identity with a self-hosted Chivo variable font.",
       "White and navy reading surfaces with restrained orange interaction marks.",
       "Real Hong Kong, portrait, industrial, and scientific imagery.",
       "Asymmetric editorial layouts rather than a repeated card grid.",
       "Inspectable evidence, native disclosures, and manually controlled video.",
-      "Motion that introduces content once and respects reduced-motion settings."
+      "One bounded hero entrance and short state transitions, with content visible by default and reduced-motion support."
     ],
     "rules": [
       {
@@ -395,7 +434,7 @@
       "**Don't** turn the asymmetric project sequence into a repeated rounded-card grid.",
       "**Don't** crop scientific evidence for a photographic effect or detach it from its experimental context.",
       "**Don't** add gradients, decorative grids, 3D effects, synthetic evidence, or invented personal photographs.",
-      "**Don't** add routine card shadows; the existing shadow belongs to the expanded mobile header.",
+      "**Don't** add routine card shadows; the existing shadow belongs to the anchored mobile navigation drawer.",
       "**Don't** make essential text, navigation, or evidence depend on JavaScript or entrance motion."
     ]
   }

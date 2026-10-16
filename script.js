@@ -2,59 +2,129 @@
   const root = document.documentElement;
   const rail = document.querySelector('.site-rail');
   const menu = document.querySelector('.menu-toggle');
+  const drawer = document.querySelector('.navigation-drawer');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  root.classList.remove('no-js');
-  root.classList.add('js');
-  rail?.setAttribute('data-menu-open', 'false');
+  const desktop = matchMedia('(min-width: 851px)');
+  const ease = 'cubic-bezier(.22,1,.36,1)';
+  const entrance = [];
+  let input = 'pointer';
+  root.classList.replace('no-js', 'js');
+  const setInput = value => { input = value; root.dataset.input = value; };
+  document.addEventListener('pointerdown', () => setInput('pointer'), true);
+  document.addEventListener('keydown', () => setInput('keyboard'), true);
 
-  function closeMenu(returnFocus = false) {
-    rail?.setAttribute('data-menu-open', 'false');
-    menu?.setAttribute('aria-expanded', 'false');
-    if (returnFocus) menu?.focus({ preventScroll: true });
+  const backdrop = document.createElement('div');
+  backdrop.className = 'menu-backdrop';
+  backdrop.hidden = true;
+  backdrop.setAttribute('aria-hidden', 'true');
+  rail?.after(backdrop);
+  let menuOpen = false;
+  let menuRevision = 0;
+  let menuAnimations = [];
+  function setMenu(open, animate = false, returnFocus = false) {
+    if (!drawer || !menu || !rail) return;
+    const revision = ++menuRevision;
+    menuAnimations.forEach(animation => animation.cancel());
+    menuAnimations = [];
+    menuOpen = open && !desktop.matches;
+    menu.setAttribute('aria-expanded', String(menuOpen));
+    // Closed controls leave the focus order as soon as dismissal starts.
+    if (!menuOpen && (returnFocus || drawer.contains(document.activeElement))) menu.focus({ preventScroll: true });
+    drawer.inert = !desktop.matches && !menuOpen;
+    const finish = () => {
+      if (revision !== menuRevision) return;
+      rail.dataset.menuOpen = String(menuOpen);
+      backdrop.hidden = !menuOpen;
+    };
+    const visible = rail.dataset.menuOpen === 'true';
+    if (menuOpen) { rail.dataset.menuOpen = 'true'; backdrop.hidden = false; updateNavigation(); }
+    if (!animate || reduced.matches || desktop.matches || (!menuOpen && !visible)) { finish(); return; }
+    menuAnimations = [
+      drawer.animate(menuOpen
+        ? [{ opacity: 0, transform: 'translateY(-10px)' }, { opacity: 1, transform: 'translateY(0)' }]
+        : [{ opacity: 1 }, { opacity: 0 }], { duration: menuOpen ? 220 : 100, easing: ease }),
+      backdrop.animate(menuOpen ? [{ opacity: 0 }, { opacity: 1 }] : [{ opacity: 1 }, { opacity: 0 }], { duration: menuOpen ? 180 : 100 })
+    ];
+    Promise.all(menuAnimations.map(animation => animation.finished)).then(finish).catch(() => {});
   }
-  menu?.addEventListener('click', () => {
-    const open = menu.getAttribute('aria-expanded') !== 'true';
-    menu.setAttribute('aria-expanded', String(open));
-    rail.setAttribute('data-menu-open', String(open));
-  });
+  menu?.addEventListener('click', event => setMenu(!menuOpen, event.detail > 0));
+  backdrop.addEventListener('click', () => setMenu(false, true));
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && menu?.getAttribute('aria-expanded') === 'true') closeMenu(true);
+    if (event.key === 'Escape' && menuOpen) setMenu(false, false, true);
   });
-  rail?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu()));
-  matchMedia('(min-width: 851px)').addEventListener('change', () => closeMenu());
+  document.addEventListener('focusin', event => {
+    if (menuOpen && !rail.contains(event.target)) setMenu(false);
+  });
+  rail?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+  desktop.addEventListener('change', () => setMenu(false));
 
-  const navLinks = [...document.querySelectorAll('.primary-navigation a')].filter(link => link.pathname === location.pathname || (link.getAttribute('href') || '').startsWith('#'));
+  const navigation = document.querySelector('.primary-navigation');
+  const navLinks = [...(navigation?.querySelectorAll('a') || [])].filter(link => link.pathname === location.pathname || (link.getAttribute('href') || '').startsWith('#'));
   const targets = navLinks.map(link => ({ link, section: document.querySelector(link.hash) })).filter(item => item.section);
+  const indicator = document.createElement('span');
+  indicator.className = 'nav-indicator';
+  indicator.setAttribute('aria-hidden', 'true');
+  navigation?.append(indicator);
   let frame = 0;
   function updateNavigation() {
     frame = 0;
-    const line = scrollY + (innerWidth <= 850 ? 150 : 160);
+    const line = scrollY + (desktop.matches ? 160 : 150);
     let current = targets[0];
     for (const item of targets) if (item.section.offsetTop <= line) current = item;
-    if (scrollY + innerHeight >= document.documentElement.scrollHeight - 8) current = targets.at(-1);
+    if (scrollY + innerHeight >= root.scrollHeight - 8) current = targets.at(-1);
     for (const item of targets) {
       if (item === current) item.link.setAttribute('aria-current', 'location');
       else item.link.removeAttribute('aria-current');
     }
+    indicator.hidden = !current;
+    if (current && navigation.getClientRects().length) {
+      const link = current.link;
+      indicator.style.transform = `translate3d(${link.offsetLeft - 12}px,${link.offsetTop + link.offsetHeight / 2 - 3}px,0)`;
+    }
   }
   addEventListener('scroll', () => { if (!frame) frame = requestAnimationFrame(updateNavigation); }, { passive: true });
   addEventListener('resize', updateNavigation);
+  document.fonts.ready.then(updateNavigation);
+  setMenu(false);
   updateNavigation();
 
+  let evidenceTransition;
   const controls = document.querySelector('.evidence-controls');
   if (controls) {
     const tabs = [...controls.querySelectorAll('button')];
     const panels = tabs.map(tab => document.getElementById(tab.dataset.panel));
+    let selected = 0;
+    let revision = 0;
     controls.hidden = false;
     controls.setAttribute('role', 'tablist');
-    const activate = (index, focus = false, animate = false) => {
+    const apply = index => {
+      selected = index;
       tabs.forEach((tab, i) => {
         tab.setAttribute('aria-selected', String(i === index));
         tab.tabIndex = i === index ? 0 : -1;
         panels[i].hidden = i !== index;
       });
+    };
+    const activate = (index, focus = false, animate = false) => {
+      const request = ++revision;
+      evidenceTransition?.skipTransition();
+      evidenceTransition = undefined;
+      panels.forEach(panel => panel.getAnimations().forEach(animation => animation.cancel()));
+      const motion = animate && !reduced.matches && index !== selected;
       if (focus) tabs[index].focus();
-      if (animate && !reduced.matches) panels[index].animate([{ opacity: .65, transform: 'translateY(6px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 220, easing: 'cubic-bezier(.22,1,.36,1)' });
+      if (motion && typeof document.startViewTransition === 'function') {
+        root.dataset.view = 'evidence';
+        const transition = document.startViewTransition(() => { if (request === revision) apply(index); });
+        evidenceTransition = transition;
+        transition.ready.catch(() => {}); // An obsolete snapshot can be skipped deliberately.
+        transition.finished.catch(() => {}).finally(() => {
+          if (request === revision) { delete root.dataset.view; evidenceTransition = undefined; }
+        });
+      } else {
+        delete root.dataset.view;
+        apply(index);
+        if (motion) panels[index].animate([{ opacity: .6, transform: 'translateY(4px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 180, easing: ease });
+      }
     };
     tabs.forEach((tab, index) => {
       tab.id = `evidence-tab-${index}`;
@@ -73,7 +143,7 @@
         if (next !== undefined) { event.preventDefault(); activate(next, true); }
       });
     });
-    activate(0);
+    apply(0);
   }
 
   const copy = document.querySelector('.copy-email');
@@ -85,21 +155,39 @@
       catch { status.textContent = 'Select the email address above to copy it.'; }
     });
   }
-
+  document.querySelectorAll('details').forEach(disclosure => {
+    disclosure.addEventListener('toggle', () => {
+      if (!disclosure.open || input === 'keyboard' || reduced.matches) return;
+      [...disclosure.children].filter(child => child.tagName !== 'SUMMARY').forEach(child => {
+        child.animate([{ opacity: .4, transform: 'translateY(4px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 180, easing: ease });
+      });
+    });
+  });
   if (!reduced.matches && Element.prototype.animate) {
     document.querySelectorAll('.name-line > span').forEach((line, index) => {
-      line.animate([{ transform: 'translateY(105%)' }, { transform: 'translateY(0)' }], { duration: 800, delay: index * 100, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
+      entrance.push(line.animate([{ transform: 'translateY(28%)', opacity: .3 }, { transform: 'translateY(0)', opacity: 1 }], { duration: 700, delay: index * 70, easing: ease, fill: 'backwards' }));
     });
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          const image = entry.target.matches('figure');
-          entry.target.animate(image ? [{ transform: 'translateY(16px)', opacity: .75 }, { transform: 'translateY(0)', opacity: 1 }] : [{ transform: 'translateY(10px)', opacity: .7 }, { transform: 'translateY(0)', opacity: 1 }], { duration: image ? 650 : 480, easing: 'cubic-bezier(.22,1,.36,1)' });
-          observer.unobserve(entry.target);
-        }
-      }, { threshold: .12 });
-      document.querySelectorAll('.section-heading, .project-feature > figure, .about-images, .publication, .research-card, .timeline article, .place-image').forEach(element => observer.observe(element));
-    }
+    const photograph = document.querySelector('.hero-image-frame');
+    if (photograph) entrance.push(photograph.animate([
+      { clipPath: 'inset(0 0 18% 0)', transform: 'translateY(12px)', opacity: .6 },
+      { clipPath: 'inset(0)', transform: 'translateY(0)', opacity: 1 }
+    ], { duration: 680, delay: 100, easing: ease, fill: 'backwards' }));
   }
+  addEventListener('pageswap', event => {
+    event.viewTransition?.ready.catch(() => {});
+    if (reduced.matches || input === 'keyboard') event.viewTransition?.skipTransition();
+  });
+  addEventListener('pagereveal', event => {
+    if (!event.viewTransition) return;
+    event.viewTransition.ready.catch(() => {});
+    entrance.forEach(animation => animation.cancel());
+    if (reduced.matches) event.viewTransition.skipTransition();
+  });
+  // A changed accessibility preference also settles any interaction in progress.
+  reduced.addEventListener('change', () => {
+    if (!reduced.matches) return;
+    evidenceTransition?.skipTransition();
+    document.getAnimations().forEach(animation => animation.cancel());
+    setMenu(menuOpen);
+  });
 })();

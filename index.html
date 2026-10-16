@@ -11,6 +11,7 @@
   <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
   <link as="font" crossorigin="" href="assets/fonts/chivo-variable.ttf" rel="preload" type="font/ttf"/>
   <link href="styles.css" rel="stylesheet"/>
+  <link href="layout-motion.css" rel="stylesheet"/>
  </head>
  <body>
   <a class="skip-link" href="#main-content">
@@ -33,74 +34,67 @@
       +
      </span>
     </button>
-    <nav aria-label="Primary navigation" class="primary-navigation" id="primary-navigation">
-     <a href="#home">
-      Home
-     </a>
-     <a href="#projects">
-      Work
-     </a>
-     <a href="#publications">
-      Publications
-     </a>
-     <a href="#about">
-      About
-     </a>
-     <a href="#research">
-      Research
-     </a>
-     <a href="#news">
-      News
-     </a>
-     <a href="#experience">
-      Experience
-     </a>
-     <a href="#cv">
-      Education
-     </a>
-     <a href="#contact">
-      Contact
-     </a>
-    </nav>
-    <div class="rail-footer">
-     <a class="cv-link" download="" href="assets/Zhenghao_Yu_Resume.pdf">
-      Download CV
-      <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
-       <path d="M5 19 19 5M5 5h14v14">
-       </path>
-      </svg>
-     </a>
-     <div>
-      <a href="mailto:Zhenghao@connect.hku.hk">
-       Email
+    <div class="navigation-drawer">
+     <nav aria-label="Primary navigation" class="primary-navigation" id="primary-navigation">
+      <a href="#home">
+       Home
       </a>
-      <a href="https://github.com/yzh423?tab=repositories" rel="noreferrer" target="_blank">
-       GitHub
-       <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+      <a href="#projects">
+       Work
+      </a>
+      <a href="#publications">
+       Publications
+      </a>
+      <a href="#about">
+       About
+      </a>
+      <a href="#research">
+       Research
+      </a>
+      <a href="#news">
+       News
+      </a>
+      <a href="#experience">
+       Experience
+      </a>
+      <a href="#cv">
+       Education
+      </a>
+      <a href="#contact">
+       Contact
+      </a>
+     </nav>
+     <div class="rail-footer">
+      <a class="cv-link" download="" href="assets/Zhenghao_Yu_Resume.pdf">
+       Download CV
+       <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
         <path d="M5 19 19 5M5 5h14v14">
         </path>
        </svg>
       </a>
+      <div>
+       <a href="mailto:Zhenghao@connect.hku.hk">
+        Email
+       </a>
+       <a href="https://github.com/yzh423?tab=repositories" rel="noreferrer" target="_blank">
+        GitHub
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
+         <path d="M5 19 19 5M5 5h14v14">
+         </path>
+        </svg>
+       </a>
+      </div>
+      <p>
+       Hong Kong
+       <br/>
+       Open to research opportunities
+      </p>
      </div>
-     <p>
-      Hong Kong
-      <br/>
-      Open to research opportunities
-     </p>
     </div>
    </div>
   </aside>
   <main id="main-content">
-   <section class="hero" id="home">
-    <div class="hero-top">
-     <a href="#contact">
-      Available for research conversations
-      <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
-       <path d="M5 19 19 5M5 5h14v14">
-       </path>
-      </svg>
-     </a>
-    </div>
+   <section class="hero hero-composed" id="home">
     <h1>
      <span class="name-line">
       <span>
@@ -119,47 +113,69 @@
       <br/>
       to reliable robot behavior.
      </p>
-     <div>
-      <p class="hero-intro">
-       I study Computer Engineering at the University of Hong Kong. My work connects robot data, motion, and control, and tests how systems behave beyond ideal conditions.
-      </p>
+     <p class="hero-intro">
+      I study Computer Engineering at the University of Hong Kong. My work connects robot data, motion, and control, and tests how systems behave beyond ideal conditions.
+     </p>
+     <div class="hero-actions">
       <a class="text-link" href="#projects">
        Explore selected work
-       <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+       <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
+        <path d="M5 19 19 5M5 5h14v14">
+        </path>
+       </svg>
+      </a>
+      <a class="availability-link" href="#contact">
+       Available for research conversations
+       <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
         <path d="M5 19 19 5M5 5h14v14">
         </path>
        </svg>
       </a>
      </div>
     </div>
+    <figure class="place-image hero-place">
+     <div class="hero-image-frame">
+      <img alt="The University of Hong Kong and the buildings of Pok Fu Lam" fetchpriority="high" height="960" src="assets/hku-pokfulam-view.jpg" width="1280"/>
+     </div>
+     <figcaption>
+      <div class="place-caption">
+       <span>
+        Pok Fu Lam, Hong Kong
+       </span>
+       <a href="assets/hong-kong-harbour.jpg" rel="noreferrer" target="_blank">
+        Harbour photograph
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
+         <path d="M5 19 19 5M5 5h14v14">
+         </path>
+        </svg>
+       </a>
+      </div>
+      <details class="photo-credit">
+       <summary>
+        Photo credit
+       </summary>
+       <p>
+        Campus view by
+        <a href="https://commons.wikimedia.org/wiki/File:The_University_of_Hong_Kong_in_Pok_Fu_Lam_2023_11_part11.jpg" rel="noreferrer" target="_blank">
+         Qwer132477
+        </a>
+        ; harbour photograph by
+        <a href="https://commons.wikimedia.org/wiki/File:2024-12-27_Avenue_of_Stars_and_skyline_of_Wan_Chai,_Hong_Kong.jpg" rel="noreferrer" target="_blank">
+         Alexkom000
+        </a>
+        . Both
+        <a href="https://creativecommons.org/licenses/by/4.0/" rel="noreferrer" target="_blank">
+         CC BY 4.0
+        </a>
+        ; campus image cropped for layout.
+       </p>
+      </details>
+     </figcaption>
+    </figure>
     <p class="hero-note">
      Seeking MS / PhD research opportunities · Based in Hong Kong
     </p>
    </section>
-   <figure class="place-image">
-    <img alt="Victoria Harbour and the Hong Kong skyline from the Avenue of Stars" height="853" src="assets/hong-kong-harbour.jpg" width="1280"/>
-    <figcaption>
-     <span>
-      Hong Kong. A place to learn, build, and look closer.
-     </span>
-     <details>
-      <summary>
-       Photo credit
-      </summary>
-      <p>
-       Alexkom000,
-       <a href="https://commons.wikimedia.org/wiki/File:2024-12-27_Avenue_of_Stars_and_skyline_of_Wan_Chai,_Hong_Kong.jpg" rel="noreferrer" target="_blank">
-        Wikimedia Commons
-       </a>
-       ,
-       <a href="https://creativecommons.org/licenses/by/4.0/" rel="noreferrer" target="_blank">
-        CC BY 4.0
-       </a>
-       . Cropped for layout.
-      </p>
-     </details>
-    </figcaption>
-   </figure>
    <section class="section projects-section" id="projects">
     <div class="section-heading">
      <h2>
@@ -231,21 +247,21 @@
       <div class="resource-links">
        <a href="projects/reliable-robotic-manipulation/">
         Explore research and figures
-        <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
          <path d="M5 19 19 5M5 5h14v14">
          </path>
         </svg>
        </a>
        <a href="assets/manipulation-research/r3-technical-report.pdf" rel="noreferrer" target="_blank">
         Technical report
-        <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
          <path d="M5 19 19 5M5 5h14v14">
          </path>
         </svg>
        </a>
        <a href="https://github.com/yzh423/PID-MATLAB" rel="noreferrer" target="_blank">
         Public code (earlier release)
-        <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
          <path d="M5 19 19 5M5 5h14v14">
          </path>
         </svg>
@@ -280,9 +296,8 @@
       <div>
        <h4>
         Three cases.
-        <br>
-         A paired comparison.
-        </br>
+        <br/>
+        A paired comparison.
        </h4>
        <p>
         Joint RMS tracking error fell by a mean 90.7% against the initial manually tuned PID across three prespecified reliability cases, with reductions of 83.5–96.4%.
@@ -299,9 +314,8 @@
       <div>
        <h4>
         Change the clock.
-        <br>
-         Test the result.
-        </br>
+        <br/>
+        Test the result.
        </h4>
        <p>
         All 20 plant-only refinement pairs stayed within tolerance. When both the plant and feedback period were refined, 14/20 pairs were stable and 6/20 showed sensitivity.
@@ -331,7 +345,7 @@
      </div>
      <a class="text-link" href="projects/reliable-robotic-manipulation/">
       Explore the full study
-      <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+      <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
        <path d="M5 19 19 5M5 5h14v14">
        </path>
       </svg>
@@ -394,14 +408,14 @@
       <div class="resource-links">
        <a href="https://yzh423.github.io/factory-dataset/" rel="noreferrer" target="_blank">
         Dataset website
-        <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
          <path d="M5 19 19 5M5 5h14v14">
          </path>
         </svg>
        </a>
        <a href="https://github.com/yzh423/factory-dataset" rel="noreferrer" target="_blank">
         GitHub
-        <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
          <path d="M5 19 19 5M5 5h14v14">
          </path>
         </svg>
@@ -434,7 +448,7 @@
       <div class="resource-links">
        <a href="https://github.com/yzh423/single-arm-mount-trajectory" rel="noreferrer" target="_blank">
         Evaluation pipeline
-        <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
          <path d="M5 19 19 5M5 5h14v14">
          </path>
         </svg>
@@ -456,7 +470,7 @@
     </article>
     <a class="all-projects-link text-link" href="https://github.com/yzh423?tab=repositories" rel="noreferrer" target="_blank">
      All GitHub repositories
-     <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+     <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
       <path d="M5 19 19 5M5 5h14v14">
       </path>
      </svg>
@@ -864,7 +878,7 @@
      </p>
      <a class="contact-email" href="mailto:Zhenghao@connect.hku.hk">
       Zhenghao@connect.hku.hk
-      <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+      <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
        <path d="M5 19 19 5M5 5h14v14">
        </path>
       </svg>
@@ -883,14 +897,14 @@
       <div class="resource-links">
        <a href="https://github.com/yzh423" rel="noreferrer" target="_blank">
         GitHub
-        <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
          <path d="M5 19 19 5M5 5h14v14">
          </path>
         </svg>
        </a>
        <a download="" href="assets/Zhenghao_Yu_Resume.pdf">
         Curriculum Vitae
-        <svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
          <path d="M5 19 19 5M5 5h14v14">
          </path>
         </svg>

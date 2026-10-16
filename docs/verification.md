@@ -1,34 +1,36 @@
 # Verification record
 
-Verified 17 October 2026, Asia/Shanghai. Independent website at the GitHub project path `/YUzhenghao-s-web/`.
+Verified 17 October 2026, Asia/Shanghai. Independent website at `/YUzhenghao-s-web/`.
 
 ## Content and recovery
 
-- Published original source commit: `8220242cba65dcf229750e61ce6f6caf174f8e82`.
-- Old site archived by GitHub tag `archive/pre-new-site-2026-10-16`; local ZIP, history bundle and working-copy ZIP saved separately. Both ZIP integrity checks passed.
-- The original site's main branch and local uncommitted changes were not overwritten.
-- Static checks pass for both pages, 87 local resource/anchor references, source facts, media controls, stable downloads and all original section anchors.
-- SHA-256 comparison confirms all seven PDF assets match their source bytes: the two CV filenames, three papers, and two research reports.
+- Published original source commit remains `8220242cba65dcf229750e61ce6f6caf174f8e82`, rechecked through GitHub after the refinement. The original site and its working-copy changes are untouched.
+- Old site archived by tag `archive/pre-new-site-2026-10-16`; verified ZIPs and history bundle remain in `E:/YZH123123/website-backups/2026-10-16-current-site`.
+- Static checks pass for two pages, 90 local references, all original section anchors, source facts, image dimensions, video controls and the five stable CV/paper downloads.
+- SHA-256 comparison against the preceding commit confirms all seven PDF assets are unchanged: two CV filenames, three papers and two research reports.
 
-## Playwright
+## Responsive and browser checks
 
-Microsoft Edge through Playwright 1.62.1, using the bundled Node runtime. Fifteen recorded check groups passed; no console or local-network errors.
+Playwright 1.62.1 with Microsoft Edge. Seventeen recorded check groups passed with no console or local-network errors in the final local run.
 
-- Both homepage and full research page at 320×740, 390×844, 768×1024, 1024×680, 1440×1000 and 1440×620; no horizontal overflow.
-- Mobile menu open/close, Escape, focus return and link-triggered close.
-- Evidence tabs: clicking, active panel, ArrowRight keyboard navigation, ARIA selection.
-- Native disclosure open/close and actual H.264 video playback.
-- Visible lazy images load after traversing the whole document.
-- JavaScript disabled: all evidence and reading content remain visible; the expanded mobile rail scrolls with the page.
-- Reduced motion: no entrance animation is created.
-- Final desktop/mobile full-page and viewport PNGs for both routes, plus the settled keyboard focus state, are in `output/playwright/` locally.
+- Both pages at 320×740, 390×844, 768×1024, 1024×680, 1440×1000 and 1440×620: no horizontal overflow. Homepage name and photograph do not overlap at any tested width; two-line spelling and relaxed tracking verified.
+- Mobile menu overlays rather than shifting `main`; Escape returns focus, navigation closes the panel, and five rapid toggles settle at the final request. Drawer controls become inert immediately on dismissal.
+- Evidence: pointer and keyboard selection, ARIA state, exactly one visible panel, rapid requests, and the fallback without `document.startViewTransition`. Keyboard changes are immediate.
+- Real same-origin navigation to the research page and browser back; six additional rapid navigation/fallback cycles completed without errors.
+- Native disclosure, actual H.264 playback, and all visible lazy images after document traversal.
+- JavaScript disabled: all evidence and reading content remain visible, and the mobile rail scrolls with the page. Reduced motion: no entrance animation is created.
+- Captures: homepage and research desktop/mobile full pages and viewports, short desktop, open menu and settled evidence keyboard focus are saved in `output/playwright/` locally.
 
-## Design review
+An early test used an incorrect research-link name; the locator was corrected to the visible label. Rapid transition cancellation exposed rejected `ready` promises, now handled explicitly on deliberate skips and document lifecycle events. The final test has no ignored console errors. A later intermittent opt-in cancellation did not recur in the final instrumented full run or six additional navigation cycles.
 
-The independent Impeccable finish reviewer returned `ship` for its three scored fixes: focus contrast, heading/context presentation and refreshed verification. The original code-led review found no material content-scope or layout defects in the inspected crops. No approved visual comp or catalog QUALITY BAR card existed; this is not a claim of pixel fidelity to one.
+## Visual and code review
 
-The mechanical Impeccable scan reported one warning about native video children sitting flush to their background; it is a player surface rather than a padded text container. Taste static lint reported only the word “Robust” in an actual research title. Taste's browser checker informed removal/repositioning of above-heading project metadata and shorter topic headings, while the complete paper titles remain visible. Its remaining contact-action-as-eyebrow and font-size-count findings were assessed with the rendered result; the contact text is a working link, not a decorative label. The motion-count allowance is deliberate: native videos do not autoplay, and one-time WAAPI entrances remain optional. The final desktop grid/context correction is verified by the reviewer and refreshed Playwright captures.
+The Impeccable finish reviewer returned `ship` for the two scored fixes: the complete opening now ends within 780ms with repeated scroll reveals removed, and DESIGN.md plus its sidecar match the final grid, typography and transitions. Recaptures showed no regression from that batch. This was a code-led refinement without an approved visual comp or catalog QUALITY BAR, so no comp fidelity is claimed.
 
-## Integration limit
+The single rendered Impeccable scan flagged an existing wide simulation caption. It now uses a 60ch maximum; a direct rendered character-range measurement at 1440px confirmed 32–80 characters per line. Taste source lint has zero failures; its remaining “Robust” warning is an actual research title. Two shadow exceptions are explicitly restricted to the real overlay and removal of its former header shadow.
 
-The three requested design skills were installed from their upstream repositories and read for this build. Figma was discovered and offered for installation/connection, but no connected Figma MCP capability became available. No Figma document was created or claimed. Design, construction and verification were completed directly in the local source and Playwright.
+Taste's rendered scan flags the actual `Jul 2025` news date and a working `GitHub` contact link as above-heading labels; they belong to their respective content/actions, not decorative kickers. The ten measured font sizes include fluid responsive display, topic/title, research evidence and closing-name roles. These findings were reviewed in the captures rather than treated as reasons to remove factual dates or links. The still-page allowance remains deliberate: videos are manual, the hero enters once, and interaction motion is triggered by use.
+
+## Integrations
+
+The installed Emil design-engineering, Impeccable and Taste skills informed the refinement. Figma remains unconnected; no Figma document or connection is claimed. Source, screenshots and browser verification use the local implementation and real Playwright.

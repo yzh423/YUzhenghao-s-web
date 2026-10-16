@@ -24,20 +24,43 @@ for(const route of ['', 'projects/reliable-robotic-manipulation/']){
     await page.waitForTimeout(1050);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
     assert.equal(overflow,false,`Overflow ${route} ${width}x${height}`);
+    if(!route){
+      const geometry=await page.evaluate(()=>{
+        const line=document.querySelector('.name-line:last-child > span');
+        const range=document.createRange();range.selectNodeContents(line);
+        const text=range.getBoundingClientRect();
+        const image=document.querySelector('.hero-image-frame').getBoundingClientRect();
+        return {overlap:text.left<image.right&&text.right>image.left&&text.top<image.bottom&&text.bottom>image.top,
+          firstLine:document.querySelector('.name-line').textContent.trim(),
+          tracking:parseFloat(getComputedStyle(document.querySelector('.hero h1')).letterSpacing),
+          fontSize:parseFloat(getComputedStyle(document.querySelector('.hero h1')).fontSize)};
+      });
+      assert.equal(geometry.overlap,false,`Name/image collision ${width}`);
+      assert.equal(geometry.firstLine,'Zhenghao YU');
+      assert.ok(geometry.tracking>=-.013*geometry.fontSize,'Relaxed hero tracking');
+    }
+    if(!route && width===1440 && height===620) await page.screenshot({path:resolve(output,'home-short-desktop.png')});
     if(!route && width===390){
+      const originalTop=await page.locator('main').evaluate(el=>el.getBoundingClientRect().top);
+
       await page.getByRole('button',{name:'Menu',exact:false}).click();
       assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'true');
+      await page.waitForTimeout(250);
+      assert.equal(await page.locator('main').evaluate(el=>el.getBoundingClientRect().top),originalTop,'Menu must not shift content');
+      await page.screenshot({path:resolve(output,'mobile-menu-open.png')});
       await page.keyboard.press('Escape');
       assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
       assert.equal(await page.evaluate(()=>document.activeElement.classList.contains('menu-toggle')),true);
-      await page.getByRole('button',{name:'Menu',exact:false}).click();
+      await page.locator('.menu-toggle').evaluate(el=>{for(let i=0;i<5;i++)el.dispatchEvent(new MouseEvent('click',{bubbles:true,detail:1}));});
+      await page.waitForTimeout(280);
+      assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'true','Rapid toggles settle at last request');
       await page.getByRole('link',{name:'Publications',exact:true}).click();
       assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
       await page.goto(base,{waitUntil:'networkidle'});
     }
     if(!route && width===1440 && height===1000){
       await page.getByRole('tab',{name:'Time-step sensitivity'}).click();
-      assert.equal(await page.locator('#timesteps').isVisible(),true);
+      await page.locator('#timesteps').waitFor({state:'visible'});
       assert.equal(await page.locator('#tracking').isVisible(),false);
       await page.getByRole('tab',{name:'Time-step sensitivity'}).focus();
       await page.keyboard.press('ArrowRight');
@@ -47,7 +70,14 @@ for(const route of ['', 'projects/reliable-robotic-manipulation/']){
       await page.keyboard.press('ArrowRight');
       await page.waitForTimeout(240);
       await page.locator('.evidence-browser').screenshot({path:resolve(output,'evidence-keyboard-focus.png')});
-      await page.getByRole('tab',{name:'Tracking',exact:true}).click();
+      await page.locator('.evidence-controls').evaluate(el=>{
+        const tabs=el.querySelectorAll('button');
+        for(const i of [0,2,1,2,0])tabs[i].dispatchEvent(new MouseEvent('click',{bubbles:true,detail:1}));
+      });
+      await page.locator('#tracking').waitFor({state:'visible'});
+      await page.waitForTimeout(300);
+      assert.equal(await page.getByRole('tab',{name:'Tracking',exact:true}).getAttribute('aria-selected'),'true');
+      assert.equal(await page.locator('.evidence-panel:visible').count(),1);
       const disclosure=page.locator('.research-feature details');
       await disclosure.locator('summary').click();assert.equal(await disclosure.getAttribute('open'),'');
       await disclosure.locator('summary').click();
@@ -74,6 +104,23 @@ for(const route of ['', 'projects/reliable-robotic-manipulation/']){
     results.push({route:route||'home',width,height,overflow:false});
   }
 }
+// Native View Transitions are optional. Verify the immediate + WAAPI fallback.
+await page.goto(base,{waitUntil:'networkidle'});
+await page.evaluate(()=>{document.startViewTransition=undefined;});
+await page.getByRole('tab',{name:'Arrival & effort'}).click();
+await page.locator('#arrival').waitFor({state:'visible'});
+await page.getByRole('tab',{name:'Arrival & effort'}).focus();
+await page.keyboard.press('Home');
+assert.equal(await page.locator('#tracking').isVisible(),true);
+assert.equal(await page.locator('#tracking').evaluate(el=>el.getAnimations().length),0,'Keyboard changes are immediate');
+results.push({test:'rapid state changes, text/image separation, overlay stability and transition fallback',passed:true});
+// Use actual same-origin document navigation and history restoration.
+await page.getByRole('link',{name:'Explore research and figures',exact:true}).click();
+await page.waitForURL('**/projects/reliable-robotic-manipulation/');
+assert.equal(await page.locator('.research-title').isVisible(),true);
+await page.goBack();
+await page.waitForURL(base);
+results.push({test:'cross-document navigation and browser back',passed:true});
 const plain=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
 const plainPage=await plain.newPage();await plainPage.goto(base);
 assert.equal(await plainPage.locator('#arrival').isVisible(),true);

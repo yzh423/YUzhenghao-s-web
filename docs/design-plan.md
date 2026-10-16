@@ -20,3 +20,7 @@ One signature name reveal; subtle control press feedback; distinct image settlin
 
 ## Implementation and verification
 Import exact assets and source content, then build new HTML/CSS/JS and reframe the full research page. Use relative paths for GitHub project Pages. Run local asset/anchor checks; Playwright widths 320, 390, 768, 1024 and 1440 including short desktop, no JS and reduced motion. Capture desktop/mobile, inspect and fix in a batched pass. Run Impeccable and Taste checks. Request the Impeccable finish review and document the design. Commit, push, deploy and verify the live independent URL.
+
+## 17 October refinement
+
+[Hero and motion refinement](hero-motion-refinement.md) supersedes the original vertical opening and motion sequence. The established type and palette remain. The photo now shares the opening grid with Daniel and the introduction; the complete entrance ends within 780ms. Repeated scroll reveals are removed. Mobile navigation overlays the document, while evidence and same-origin page navigation receive progressive View Transitions with immediate keyboard/reduced-motion behavior.

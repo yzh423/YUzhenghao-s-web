@@ -6,7 +6,7 @@ The existing portfolio's text, photographs, scientific figures, videos and PDFs 
 
 - `portrait.jpg`: the user's portrait, preserved from the existing website.
 - `hong-kong-harbour.jpg`: Alexkom000, [Avenue of Stars and skyline of Wan Chai, Hong Kong](https://commons.wikimedia.org/wiki/File:2024-12-27_Avenue_of_Stars_and_skyline_of_Wan_Chai,_Hong_Kong.jpg), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Responsive crop; credit is also available below the website image.
-- `hku-pokfulam-view.jpg`: Qwer132477, [The University of Hong Kong in Pok Fu Lam](https://commons.wikimedia.org/wiki/File:The_University_of_Hong_Kong_in_Pok_Fu_Lam_2023_11_part11.jpg), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Preserved source asset; not currently displayed.
+- `hku-pokfulam-view.jpg`: Qwer132477, [The University of Hong Kong in Pok Fu Lam](https://commons.wikimedia.org/wiki/File:The_University_of_Hong_Kong_in_Pok_Fu_Lam_2023_11_part11.jpg), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Opening photograph, responsively cropped; credit is available below it. The harbour photograph remains linked from the caption.
 - `run-run-shaw-building.jpg`: campus photograph preserved from the existing website. No new authorship or license claim is made.
 - `factory-dataset-*.jpg`: real packaging, inspection and textile-manipulation images preserved from the user's factory-dataset project and existing portfolio.
 
