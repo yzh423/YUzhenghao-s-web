@@ -19,7 +19,7 @@ Use the existing portrait, Hong Kong and HKU photographs with existing attributi
 Read an introduction, browse selected work and its evidence, open the full manipulation project, review publications and background, download the CV or email Zhenghao@connect.hku.hk. Preserve old section anchors. Test mobile navigation, keyboard behavior, native disclosures, evidence switching, videos, local paths, console errors and no-JavaScript reading in Playwright. Deliver desktop and mobile screenshots.
 
 ## Integration status
-The user requested Figma MCP; Figma was discovered but is not installed/connected. A connection request was surfaced. Continue independent design and implementation; never claim a Figma file or connection exists without verified tool access. Playwright is available through the bundled runtime.
+The user declined Figma installation. Continue with available local tools and Playwright; do not suggest Figma again or claim a Figma file or connection. Playwright is available through the bundled runtime.
 
 ## Preserved old site
 Local snapshots: E:/YZH123123/website-backups/2026-10-16-current-site. GitHub tag archive/pre-new-site-2026-10-16 on yzh423/yzh423.github.io.

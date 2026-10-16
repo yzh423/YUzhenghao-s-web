@@ -38,6 +38,8 @@ for(const route of ['', 'projects/reliable-robotic-manipulation/']){
       assert.equal(geometry.overlap,false,`Name/image collision ${width}`);
       assert.equal(geometry.firstLine,'Zhenghao YU');
       assert.ok(geometry.tracking>=-.013*geometry.fontSize,'Relaxed hero tracking');
+      const chapterGrounds=await page.locator('main > .section').evaluateAll(sections=>sections.map(section=>getComputedStyle(section).backgroundColor));
+      for(let i=1;i<chapterGrounds.length;i++)assert.notEqual(chapterGrounds[i],chapterGrounds[i-1],`Adjacent chapters need distinguishable fields: ${width}`);
     }
     if(!route && width===1440 && height===620) await page.screenshot({path:resolve(output,'home-short-desktop.png')});
     if(!route && width===390){
@@ -56,9 +58,28 @@ for(const route of ['', 'projects/reliable-robotic-manipulation/']){
       assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'true','Rapid toggles settle at last request');
       await page.getByRole('link',{name:'Publications',exact:true}).click();
       assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
+      await page.waitForFunction(()=>document.querySelector('.primary-navigation a[href="#publications"]').getAttribute('aria-current')==='location');
       await page.goto(base,{waitUntil:'networkidle'});
     }
     if(!route && width===1440 && height===1000){
+      const contrast=await page.evaluate(()=>{
+        const luminance=color=>{
+          const channels=color.match(/[\d.]+/g).slice(0,3).map(Number).map(value=>{const c=value/255;return c<=.04045?c/12.92:((c+.055)/1.055)**2.4;});
+          return channels[0]*.2126+channels[1]*.7152+channels[2]*.0722;
+        };
+        const ratio=(a,b)=>{const l=[luminance(a),luminance(b)].sort((a,b)=>b-a);return (l[0]+.05)/(l[1]+.05);};
+        const rail=getComputedStyle(document.querySelector('.site-rail')).backgroundColor;
+        return [...document.querySelectorAll('.primary-navigation a,.rail-footer p,.site-rail .cv-link')].map(el=>{
+          const style=getComputedStyle(el);
+          const ground=style.backgroundColor==='rgba(0, 0, 0, 0)'?rail:style.backgroundColor;
+          return {text:el.textContent.trim(),ratio:ratio(style.color,ground)};
+        });
+      });
+      assert.ok(contrast.every(item=>item.ratio>=4.5),JSON.stringify(contrast));
+      const hoverTarget=page.getByRole('link',{name:'Publications',exact:true});
+      await hoverTarget.hover();await page.waitForTimeout(220);
+      assert.notEqual(await hoverTarget.evaluate(el=>getComputedStyle(el).color),await hoverTarget.evaluate(el=>getComputedStyle(el).backgroundColor));
+      results.push({test:'navigation contrast and distinct chapter fields',passed:true,minimumTextContrast:Math.min(...contrast.map(item=>item.ratio))});
       await page.getByRole('tab',{name:'Time-step sensitivity'}).click();
       await page.locator('#timesteps').waitFor({state:'visible'});
       assert.equal(await page.locator('#tracking').isVisible(),false);
@@ -100,6 +121,12 @@ for(const route of ['', 'projects/reliable-robotic-manipulation/']){
       await page.screenshot({path:resolve(output,`${label}-${width}.png`),fullPage:true});
       await page.screenshot({path:resolve(output,`${label}-${width}-viewport.png`)});
       if(!route)await page.screenshot({path:resolve(`.impeccable/review/${width===390?'mobile':'desktop'}.png`),fullPage:true});
+      if(!route){
+        await page.locator('#publications').evaluate(el=>scrollTo({top:el.offsetTop-(innerWidth<600?140:220),behavior:'instant'}));
+        await page.waitForTimeout(250);
+        await page.screenshot({path:resolve(output,`section-boundary-${width}.png`)});
+        await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
+      }
     }
     results.push({route:route||'home',width,height,overflow:false});
   }

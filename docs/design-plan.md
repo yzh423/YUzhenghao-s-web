@@ -24,3 +24,5 @@ Import exact assets and source content, then build new HTML/CSS/JS and reframe t
 ## 17 October refinement
 
 [Hero and motion refinement](hero-motion-refinement.md) supersedes the original vertical opening and motion sequence. The established type and palette remain. The photo now shares the opening grid with Daniel and the introduction; the complete entrance ends within 780ms. Repeated scroll reveals are removed. Mobile navigation overlays the document, while evidence and same-origin page navigation receive progressive View Transitions with immediate keyboard/reduced-motion behavior.
+
+[Navigation and chapter contrast](section-contrast-refinement.md) adds a navy rail, reversed current destination, pale blue chapter fields and a new credited Victoria Harbour panorama. These changes supersede the white rail and campus opening described in the preceding refinement; typography and motion remain in that established system.

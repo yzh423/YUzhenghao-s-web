@@ -33,4 +33,15 @@ Taste's rendered scan flags the actual `Jul 2025` news date and a working `GitHu
 
 ## Integrations
 
-The installed Emil design-engineering, Impeccable and Taste skills informed the refinement. Figma remains unconnected; no Figma document or connection is claimed. Source, screenshots and browser verification use the local implementation and real Playwright.
+The installed Emil design-engineering, Impeccable and Taste skills informed the refinement. The user declined Figma installation. Source, screenshots and browser verification use available local tools and real Playwright.
+
+## Navigation and chapter contrast refinement
+
+The subsequent requested contrast pass retains the established type and motion, reverses the navigation onto navy, alternates white and pale-blue chapter fields, and uses Dllu's actual Victoria Harbour panorama under CC BY-SA 4.0. The image, full-panorama link, attribution, license and responsive crop are recorded in assets/CREDITS.md.
+
+- Eighteen local Playwright groups passed without console/network errors. Inactive/selected navigation, sidebar metadata and the reversed CV action have a minimum measured text contrast of 9.23:1.
+- Both routes pass the same six viewport configurations. Homepage chapters have distinct adjacent fields. Desktop/phone section-boundary screenshots and the open navy mobile drawer are captured alongside the existing opening captures.
+- After the proportional active-section threshold update, a targeted test passed 16 desktop/phone chapter-anchor states, both publication-boundary states and CV reachability within a 620px-high sidebar.
+- Static checks still cover 90 local references and all preserved anchors. All seven PDFs match the preceding commit byte-for-byte.
+- The rendered Impeccable scan returns no findings. Taste source lint has zero failures and the same actual-title “Robust” warning. Taste's rendered scan retains the working contact `GitHub` link as a false-positive above-heading label and the ten responsive/type-role sizes warning; the former news-date finding disappears with the clearer chapter spacing. No factual date or working link is removed to satisfy a layout heuristic.
+- Independent finish review found no visual contradiction with the requested rail, image or chapter separation. Its one persistence finding was resolved by the documenter; the verdict pass returned `ship` for that scored fix, with no regression.

@@ -68,7 +68,7 @@
   let frame = 0;
   function updateNavigation() {
     frame = 0;
-    const line = scrollY + (desktop.matches ? 160 : 150);
+    const line = scrollY + Math.min(desktop.matches ? 320 : 240, innerHeight * .35);
     let current = targets[0];
     for (const item of targets) if (item.section.offsetTop <= line) current = item;
     if (scrollY + innerHeight >= root.scrollHeight - 8) current = targets.at(-1);

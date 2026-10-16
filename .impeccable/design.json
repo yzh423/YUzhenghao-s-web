@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T16:36:10Z",
+  "generatedAt": "2026-10-16T16:52:16Z",
   "title": "Design System: Zhenghao YU research portfolio",
   "extensions": {
     "colorMeta": {
@@ -157,12 +157,54 @@
           "oklch(84% 0 0)",
           "oklch(95% 0 0)"
         ]
+      },
+      "section-ground": {
+        "role": "neutral",
+        "displayName": "Chapter Blue",
+        "tonalRamp": [
+          "oklch(15% 0.0074 260.73)",
+          "oklch(26% 0.0074 260.73)",
+          "oklch(38% 0.0074 260.73)",
+          "oklch(49% 0.0074 260.73)",
+          "oklch(61% 0.0074 260.73)",
+          "oklch(72% 0.0074 260.73)",
+          "oklch(84% 0.0074 260.73)",
+          "oklch(95% 0.0074 260.73)"
+        ]
+      },
+      "rail-secondary": {
+        "role": "neutral",
+        "displayName": "Rail Mist",
+        "tonalRamp": [
+          "oklch(15% 0.0315 263.50)",
+          "oklch(26% 0.0315 263.50)",
+          "oklch(38% 0.0315 263.50)",
+          "oklch(49% 0.0315 263.50)",
+          "oklch(61% 0.0315 263.50)",
+          "oklch(72% 0.0315 263.50)",
+          "oklch(84% 0.0315 263.50)",
+          "oklch(95% 0.0315 263.50)"
+        ]
+      },
+      "rail-hover": {
+        "role": "neutral",
+        "displayName": "Rail Hover",
+        "tonalRamp": [
+          "oklch(15% 0.0532 264.22)",
+          "oklch(26% 0.0532 264.22)",
+          "oklch(38% 0.0532 264.22)",
+          "oklch(49% 0.0532 264.22)",
+          "oklch(61% 0.0532 264.22)",
+          "oklch(72% 0.0532 264.22)",
+          "oklch(84% 0.0532 264.22)",
+          "oklch(95% 0.0532 264.22)"
+        ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Personal name",
-        "purpose": "The two-line personal name shares the opening grid with a real campus photograph; the desktop size caps at 112px and responsive sizes are documented in DESIGN.md."
+        "purpose": "The two-line personal name shares the opening grid with a real Victoria Harbour dusk photograph; the desktop size caps at 112px and responsive sizes are documented in DESIGN.md."
       },
       "headline": {
         "displayName": "Section headline",
@@ -222,7 +264,7 @@
       {
         "name": "hero-photo-entrance",
         "value": "680ms; delay 100ms; clip-path inset(0 0 18% 0), translateY(12px), opacity .6 to inset(0), 0, 1",
-        "purpose": "The campus photograph opens beside Daniel; this is the longest hero entrance at 780ms total. Content remains visible in the source."
+        "purpose": "The Victoria Harbour photograph opens beside Daniel; this is the longest hero entrance at 780ms total. Content remains visible in the source."
       },
       {
         "name": "mobile-menu-open",
@@ -326,9 +368,9 @@
       "name": "Rail CV action",
       "kind": "button",
       "refersTo": "cv-link",
-      "description": "Compact, full-width download action anchored near the base of the identity rail.",
-      "html": "<a class=\"ds-cv\" href=\"assets/Zhenghao_Yu_Resume.pdf\" download>Download CV <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 19 19 5M5 5h14v14\"></path></svg></a>",
-      "css": ".ds-cv{font-family:Chivo,Arial,sans-serif;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px;background:var(--ink,#1f2b4d);color:var(--paper,#fff);font-size:14px;line-height:1.6;text-decoration:none;transition:transform 140ms var(--ease-out,cubic-bezier(.22,1,.36,1)),background-color 180ms ease;}.ds-cv svg{width:20px;height:20px;flex-shrink:0;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}.ds-cv svg{width:17px;height:17px;margin-left:6px;transition:transform 180ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-cv:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}.ds-cv:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-cv:hover{background:var(--dark,#10192d);}.ds-cv:hover svg{transform:translate(2px,-2px);}}@media(prefers-reduced-motion:reduce){.ds-cv,.ds-cv svg{transition-duration:.01ms;}}"
+      "description": "Compact paper-filled download action with navy text and pale blue hover, anchored near the base of the navy identity rail.",
+      "html": "<div class=\"ds-cv-rail\"><a class=\"ds-cv\" href=\"assets/Zhenghao_Yu_Resume.pdf\" download>Download CV <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 19 19 5M5 5h14v14\"></path></svg></a></div>",
+      "css": ".ds-cv-rail{padding:36px 24px;background:var(--ink,#1f2b4d);}.ds-cv{font-family:Chivo,Arial,sans-serif;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px;background:var(--paper,#fff);color:var(--ink,#1f2b4d);font-size:14px;line-height:1.6;text-decoration:none;transition:transform 140ms var(--ease-out,cubic-bezier(.22,1,.36,1)),background-color 180ms ease;}.ds-cv svg{width:20px;height:20px;flex-shrink:0;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}.ds-cv svg{width:17px;height:17px;margin-left:6px;transition:transform 180ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-cv:focus-visible{outline:3px solid var(--accent,#f7941d);outline-offset:5px;}.ds-cv:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-cv:hover{background:var(--section-ground,#eef1f6);}.ds-cv:hover svg{transform:translate(2px,-2px);}}@media(prefers-reduced-motion:reduce){.ds-cv,.ds-cv svg{transition-duration:.01ms;}}"
     },
     {
       "name": "Text action",
@@ -342,9 +384,9 @@
       "name": "Section navigation",
       "kind": "nav",
       "refersTo": "navigation-link",
-      "description": "Muted section links with a navy current link and a single 6px orange square; the site script moves the marker over 220ms and settles it immediately for keyboard input.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Primary navigation\"><a href=\"#projects\" aria-current=\"location\">Selected work</a><a href=\"#publications\">Publications</a><a href=\"#about\">About me</a><a href=\"#contact\">Contact</a><span class=\"ds-nav-indicator\" aria-hidden=\"true\"></span></nav>",
-      "css": ".ds-nav{font-family:Chivo,Arial,sans-serif;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding-left:12px;}.ds-nav a{position:relative;padding:4px 0;color:var(--muted,#515d78);font-size:14px;line-height:1.6;text-decoration:none;transition:color 180ms ease;}.ds-nav a[aria-current]{color:var(--ink,#1f2b4d);font-weight:700;}.ds-nav-indicator{position:absolute;inset:0 auto auto 0;width:6px;height:6px;background:var(--accent,#f7941d);pointer-events:none;transform:translate3d(0,12.2px,0);transition:transform 220ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-nav a:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}@media(hover:hover) and (pointer:fine){.ds-nav a:hover{color:var(--ink,#1f2b4d);}}@media(prefers-reduced-motion:reduce){.ds-nav a,.ds-nav-indicator{transition-duration:.01ms;}}"
+      "description": "Light links on a navy ground; the current destination gains paper fill, navy text, weight 700, and the orange square. The site script moves the marker over 220ms and settles it immediately for keyboard input.",
+      "html": "<div class=\"ds-rail\"><nav class=\"ds-nav\" aria-label=\"Primary navigation\"><a href=\"#projects\" aria-current=\"location\">Work</a><a href=\"#publications\">Publications</a><a href=\"#about\">About</a><a href=\"#contact\">Contact</a><span class=\"ds-nav-indicator\" aria-hidden=\"true\"></span></nav></div>",
+      "css": ".ds-rail{padding:36px 24px;background:var(--ink,#1f2b4d);color:var(--paper,#fff);}.ds-nav{font-family:Chivo,Arial,sans-serif;position:relative;display:flex;flex-direction:column;align-items:stretch;gap:4px;}.ds-nav a{position:relative;padding:8px 12px;color:var(--rail-secondary,#c8d3e8);font-size:14px;line-height:1.6;text-decoration:none;transition:color 180ms ease;}.ds-nav a[aria-current]{background:var(--paper,#fff);color:var(--ink,#1f2b4d);font-weight:700;}.ds-nav-indicator{position:absolute;inset:0 auto auto 0;width:6px;height:6px;background:var(--accent,#f7941d);pointer-events:none;transform:translate3d(-12px,16.2px,0);transition:transform 220ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-nav a:focus-visible{outline:3px solid var(--accent,#f7941d);outline-offset:5px;}@media(hover:hover) and (pointer:fine){.ds-nav a:hover:not([aria-current]){color:var(--paper,#fff);background:var(--rail-hover,#34425f);}}@media(prefers-reduced-motion:reduce){.ds-nav a,.ds-nav-indicator{transition-duration:.01ms;}}"
     },
     {
       "name": "Evidence controls",
@@ -352,7 +394,7 @@
       "refersTo": "evidence-control",
       "description": "The implemented three-view selector, shown with Tracking selected; the site script supplies tab keyboard behavior and a progressive native View Transition with an optional WAAPI fallback.",
       "html": "<div class=\"ds-evidence-controls\" role=\"tablist\" aria-label=\"Choose experimental evidence\"><button type=\"button\" role=\"tab\" aria-selected=\"true\">Tracking</button><button type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Time-step sensitivity</button><button type=\"button\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Arrival &amp; effort</button></div>",
-      "css": ".ds-evidence-controls{font-family:Chivo,Arial,sans-serif;display:flex;gap:8px;flex-wrap:wrap;margin:32px 0;background:var(--surface,#f4f4f2);}.ds-evidence-controls button{font-family:Chivo,Arial,sans-serif;padding:12px 16px;min-height:44px;border:0;border-radius:0;background:transparent;color:var(--ink,#1f2b4d);font-size:14px;line-height:1.6;cursor:pointer;transition:background-color 180ms ease,color 180ms ease,transform 140ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-evidence-controls button[aria-selected=true]{background:var(--ink,#1f2b4d);color:var(--paper,#fff);}.ds-evidence-controls button:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}.ds-evidence-controls button:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-evidence-controls button:hover:not([aria-selected=true]){background:var(--control-hover,#e3e5e8);}}@media(prefers-reduced-motion:reduce){.ds-evidence-controls button{transition-duration:.01ms;}}"
+      "css": ".ds-evidence-controls{font-family:Chivo,Arial,sans-serif;display:flex;gap:8px;flex-wrap:wrap;margin:32px 0;background:var(--paper,#fff);}.ds-evidence-controls button{font-family:Chivo,Arial,sans-serif;padding:12px 16px;min-height:44px;border:0;border-radius:0;background:transparent;color:var(--ink,#1f2b4d);font-size:14px;line-height:1.6;cursor:pointer;transition:background-color 180ms ease,color 180ms ease,transform 140ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-evidence-controls button[aria-selected=true]{background:var(--ink,#1f2b4d);color:var(--paper,#fff);}.ds-evidence-controls button:focus-visible{outline:3px solid var(--ink,#1f2b4d);outline-offset:5px;}.ds-evidence-controls button:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-evidence-controls button:hover:not([aria-selected=true]){background:var(--control-hover,#e3e5e8);}}@media(prefers-reduced-motion:reduce){.ds-evidence-controls button{transition-duration:.01ms;}}"
     },
     {
       "name": "Native scope disclosure",
@@ -366,9 +408,9 @@
       "name": "Evidence explanation surface",
       "kind": "card",
       "refersTo": "evidence-container",
-      "description": "The text portion of an actual evidence panel; original charts remain adjacent in the implemented page.",
+      "description": "The text portion of the white evidence browser inside the pale blue selected-work chapter; original charts remain adjacent in the implemented page.",
       "html": "<section class=\"ds-evidence\"><h4>Change the clock.<br>Test the result.</h4><p>All 20 plant-only refinement pairs stayed within tolerance. When both the plant and feedback period were refined, 14/20 pairs were stable and 6/20 showed sensitivity.</p><p class=\"ds-evidence-caption\">60/60 simulation runs and 40/40 comparisons completed. Four fixed controllers, five prespecified cases, three time profiles.</p></section>",
-      "css": ".ds-evidence{font-family:Chivo,Arial,sans-serif;background:var(--surface,#f4f4f2);color:var(--ink,#1f2b4d);padding:clamp(24px,3vw,44px);}.ds-evidence h4{margin:0 0 24px;font-size:clamp(21px,2vw,28px);font-weight:550;line-height:1.1;letter-spacing:-.025em;text-wrap:balance;}.ds-evidence p{max-width:70ch;margin:0;font-size:14px;line-height:1.7;}.ds-evidence .ds-evidence-caption{margin-top:20px;color:var(--muted,#515d78);}"
+      "css": ".ds-evidence{font-family:Chivo,Arial,sans-serif;background:var(--paper,#fff);color:var(--ink,#1f2b4d);padding:clamp(24px,3vw,44px);}.ds-evidence h4{margin:0 0 24px;font-size:clamp(21px,2vw,28px);font-weight:550;line-height:1.1;letter-spacing:-.025em;text-wrap:balance;}.ds-evidence p{max-width:70ch;margin:0;font-size:14px;line-height:1.7;}.ds-evidence .ds-evidence-caption{margin-top:20px;color:var(--muted,#515d78);}"
     },
     {
       "name": "Publication text record",
@@ -385,14 +427,21 @@
       "description": "Direct email on the navy contact field with an orange visible focus outline.",
       "html": "<div class=\"ds-contact\"><a class=\"ds-email\" href=\"mailto:Zhenghao@connect.hku.hk\">Zhenghao@connect.hku.hk <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 19 19 5M5 5h14v14\"></path></svg></a></div>",
       "css": ".ds-contact{font-family:Chivo,Arial,sans-serif;padding:80px var(--space,clamp(24px,4vw,64px)) 0;background:var(--ink,#1f2b4d);color:var(--paper,#fff);}.ds-email{display:inline-flex;align-items:center;gap:12px;max-width:100%;font-size:clamp(18px,2.2vw,30px);line-height:1.6;letter-spacing:-.02em;word-break:break-word;text-decoration:none;color:inherit;}.ds-email svg{width:20px;height:20px;flex-shrink:0;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}.ds-email svg{width:26px;height:26px;margin-left:6px;transition:transform 180ms var(--ease-out,cubic-bezier(.22,1,.36,1));}.ds-email:focus-visible{outline:3px solid var(--accent,#f7941d);outline-offset:5px;}@media(hover:hover) and (pointer:fine){.ds-email:hover svg{transform:translate(2px,-2px);}}@media(max-width:600px){.ds-contact{padding:56px 20px 0;}.ds-email{font-size:clamp(15px,4.7vw,24px);gap:4px;}.ds-email svg{width:20px;height:20px;margin-left:4px;}}@media(prefers-reduced-motion:reduce){.ds-email svg{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Chapter boundary",
+      "kind": "custom",
+      "description": "Adjacent full-width pale blue and white reading chapters share the page inset and equal top/bottom section padding; headings reinforce the boundary.",
+      "html": "<div class=\"ds-chapters\"><section class=\"ds-chapter ds-chapter-pale\"><h2>Selected work</h2><p>Research and engineering, from industrial data to reliable motion.</p></section><section class=\"ds-chapter\"><h2>Publications</h2></section></div>",
+      "css": ".ds-chapters{font-family:Chivo,Arial,sans-serif;color:var(--ink,#1f2b4d);}.ds-chapter{padding:96px var(--space,clamp(24px,4vw,64px));background:var(--paper,#fff);}.ds-chapter-pale{background:var(--section-ground,#eef1f6);}.ds-chapter h2{margin:0;font-size:clamp(36px,4vw,58px);font-weight:550;line-height:1.1;letter-spacing:-.025em;text-wrap:balance;}.ds-chapter p{max-width:36ch;margin:24px 0 0;font-size:16px;line-height:1.6;}@media(max-width:850px){.ds-chapter{padding:80px var(--space,28px);}}@media(max-width:600px){.ds-chapter{padding:64px var(--space,20px);}}"
     }
   ],
   "narrative": {
     "northStar": "The Open Research Record",
-    "overview": "The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. White space and navy type establish a calm reading field; small orange marks identify interaction and emphasis. The portrait rail keeps identity and navigation available while the main column moves from introduction to evidence, publications, and background.\n\nThis name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, layout-motion.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; the opening composition and motion are refined in docs/hero-motion-refinement.md. No visual-comp fidelity or catalog quality-bar approval is asserted.",
+    "overview": "The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. A navy portrait rail keeps identity and navigation available beside a calm reading column. White and pale blue chapter fields separate introduction, evidence, publications, and background; small orange marks identify interaction and emphasis.\n\nThis name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, layout-motion.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; the opening composition and motion are refined in docs/hero-motion-refinement.md, with navigation and chapter contrast recorded in docs/section-contrast-refinement.md. No visual-comp fidelity or catalog quality-bar approval is asserted.",
     "keyCharacteristics": [
       "Type-led identity with a self-hosted Chivo variable font.",
-      "White and navy reading surfaces with restrained orange interaction marks.",
+      "A navy navigation ground, white and pale blue chapter fields, and restrained orange interaction marks.",
       "Real Hong Kong, portrait, industrial, and scientific imagery.",
       "Asymmetric editorial layouts rather than a repeated card grid.",
       "Inspectable evidence, native disclosures, and manually controlled video.",
@@ -401,12 +450,12 @@
     "rules": [
       {
         "name": "The Accent Restraint Rule",
-        "body": "Reserve orange for small orientation, selection, underline, and focus details; the principal filled action remains navy.",
+        "body": "Reserve orange for small orientation, selection, underline, and focus details; reading-column filled actions remain navy and the rail CV action reverses to paper.",
         "section": "colors"
       },
       {
         "name": "The Focus Contrast Rule",
-        "body": "Light surfaces use the navy focus outline; contact and dark-project fields use the orange outline. Keep the visible outline outside the control rather than replacing it with a subtle color shift.",
+        "body": "Light surfaces use the navy focus outline; the navy rail, contact, and dark-project fields use the orange outline. Keep the visible outline outside the control rather than replacing it with a subtle color shift.",
         "section": "colors"
       },
       {
@@ -423,7 +472,9 @@
     "dos": [
       "**Do** use self-hosted Chivo and the documented size hierarchy, preserving readable body and metadata text.",
       "**Do** use the fixed identity rail on desktop and the disclosed top navigation on small screens.",
-      "**Do** preserve navy focus outlines on light surfaces and orange outlines in the dark project and contact fields.",
+      "**Do** preserve navy focus outlines on light surfaces and orange outlines in the navy rail, dark project, and contact fields.",
+      "**Do** keep the navy navigation ground continuous across desktop rail, mobile header, and full-width drawer, with a paper current destination and reversed CV action.",
+      "**Do** separate reading chapters with the documented white and pale blue fields and equal top/bottom chapter padding.",
       "**Do** pair every scientific figure, metric, and recording with its visible scope and caption.",
       "**Do** retain original paper titles as visible paragraphs below concise publication topic headings.",
       "**Do** preserve native video controls, manual playback, and reduced-motion behavior.",

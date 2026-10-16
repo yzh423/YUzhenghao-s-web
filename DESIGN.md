@@ -4,8 +4,11 @@ description: A type-led personal research record grounded in inspectable experim
 colors:
   paper: "#fff"
   surface: "#f4f4f2"
+  section-ground: "#eef1f6"
   ink: "#1f2b4d"
   muted: "#515d78"
+  rail-secondary: "#c8d3e8"
+  rail-hover: "#34425f"
   accent: "#f7941d"
   dark: "#10192d"
   footer: "#e3e1dc"
@@ -85,7 +88,11 @@ spacing:
   gutter: "32px"
   group: "48px"
   column: "64px"
-  section: "144px"
+  section: "96px"
+  section-tablet: "80px"
+  section-phone: "64px"
+  hero-bottom: "64px"
+  hero-bottom-phone: "48px"
   page: "clamp(24px, 4vw, 64px)"
 components:
   button:
@@ -98,19 +105,26 @@ components:
     backgroundColor: "{colors.dark}"
     textColor: "{colors.paper}"
   cv-link:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
     typography: "{typography.label}"
     rounded: "{rounded.square}"
     padding: "12px"
+  cv-link-hover:
+    backgroundColor: "{colors.section-ground}"
+    textColor: "{colors.ink}"
   text-link:
     textColor: "{colors.ink}"
     padding: "6px 0"
   navigation-link:
-    textColor: "{colors.muted}"
+    textColor: "{colors.rail-secondary}"
     typography: "{typography.label}"
-    padding: "4px 0"
+    padding: "8px 12px"
+  navigation-hover:
+    backgroundColor: "{colors.rail-hover}"
+    textColor: "{colors.paper}"
   navigation-current:
+    backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
   evidence-control:
     textColor: "{colors.ink}"
@@ -131,7 +145,7 @@ components:
     backgroundColor: "{colors.dark-surface}"
     textColor: "{colors.paper}"
   evidence-container:
-    backgroundColor: "{colors.surface}"
+    backgroundColor: "{colors.paper}"
     rounded: "{rounded.square}"
     padding: "clamp(24px, 3vw, 44px)"
   figure-surface:
@@ -152,14 +166,14 @@ components:
 
 **Creative North Star: "The Open Research Record"**
 
-The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. White space and navy type establish a calm reading field; small orange marks identify interaction and emphasis. The portrait rail keeps identity and navigation available while the main column moves from introduction to evidence, publications, and background.
+The portfolio uses personal names, generous Chivo typography, and real photographic and experimental material to introduce a researcher whose work can be examined closely. A navy portrait rail keeps identity and navigation available beside a calm reading column. White and pale blue chapter fields separate introduction, evidence, publications, and background; small orange marks identify interaction and emphasis.
 
-This name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, layout-motion.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; the opening composition and motion are refined in docs/hero-motion-refinement.md. No visual-comp fidelity or catalog quality-bar approval is asserted.
+This name describes the implemented code-led direction, rather than an independently approved visual metaphor or image comp. The system is extracted from styles.css, layout-motion.css, script.js, and the manipulation project's project.css. Its documented direction is associated with FORM seed:d1c603635fc5df31 in docs/design-plan.md; the opening composition and motion are refined in docs/hero-motion-refinement.md, with navigation and chapter contrast recorded in docs/section-contrast-refinement.md. No visual-comp fidelity or catalog quality-bar approval is asserted.
 
 **Key Characteristics:**
 
 - Type-led identity with a self-hosted Chivo variable font.
-- White and navy reading surfaces with restrained orange interaction marks.
+- A navy navigation ground, white and pale blue chapter fields, and restrained orange interaction marks.
 - Real Hong Kong, portrait, industrial, and scientific imagery.
 - Asymmetric editorial layouts rather than a repeated card grid.
 - Inspectable evidence, native disclosures, and manually controlled video.
@@ -167,18 +181,21 @@ This name describes the implemented code-led direction, rather than an independe
 
 ## Colors
 
-The palette combines cool navy text, warm near-white supporting fields, and a small warm accent. Frontmatter values are normative. The sidecar's eight-step OKLCH tonal ramps are generated previews, not additional implemented palette tokens.
+The palette combines one cool navy family across dark navigation and light chapter fields, warm near-white evidence surrounds, and a small warm accent. Frontmatter values are normative. The sidecar's eight-step OKLCH tonal ramps are generated previews, not additional implemented palette tokens.
 
 ### Primary
 
-- **Research Navy — ink:** Main text, selected evidence controls, filled actions, and the contact field.
+- **Research Navy — ink:** Main text, the desktop rail and mobile header/drawer, selected evidence controls, reading-column filled actions, and the contact field.
 - **Signal Orange — accent:** Current-navigation square, selected-text background, manuscript-link underlines, text-link hover underlines, and focus outlines within dark fields. Orange is an accent rather than a broad surface fill.
 
 ### Neutral
 
-- **Paper — paper:** Page and rail background, reversed text, and white figure interiors.
-- **Soft Evidence Ground — surface:** Disclosures, evidence browser, scientific-image surrounds, and highlighted experience.
-- **Secondary Navy — muted:** Metadata, dates, captions, and inactive navigation.
+- **Paper — paper:** The introduction and alternating reading chapters, current navigation destination and rail CV action, reversed text, evidence browser, news disclosure, and white figure interiors.
+- **Soft Evidence Ground — surface:** Ordinary scope disclosures and scientific-image surrounds.
+- **Chapter Blue — section-ground:** Full-width selected work, about, news, and education/skills fields; detail-page outcomes and evidence fields; highlighted experience and rail CV hover.
+- **Secondary Navy — muted:** Metadata, dates, and captions on light surfaces.
+- **Rail Mist — rail-secondary:** Inactive chapter links and supporting rail text on the navy navigation ground.
+- **Rail Hover — rail-hover:** Filled hover state for inactive navigation destinations, with paper text.
 - **Simulation Night — dark:** Dark simulation project field and filled-action hover.
 - **Warm Footer — footer:** Closing copyright strip.
 - **Reversed Caption — dark-muted:** Supporting copy and captions inside the dark project field.
@@ -186,9 +203,9 @@ The palette combines cool navy text, warm near-white supporting fields, and a sm
 - **Control Hover — control-hover:** Unselected evidence control on pointer hover.
 - **Video Black — video-black:** Native video field within the dark project.
 
-**The Accent Restraint Rule.** Reserve orange for small orientation, selection, underline, and focus details; the principal filled action remains navy.
+**The Accent Restraint Rule.** Reserve orange for small orientation, selection, underline, and focus details; reading-column filled actions remain navy and the rail CV action reverses to paper.
 
-**The Focus Contrast Rule.** Light surfaces use the navy focus outline; contact and dark-project fields use the orange outline. Keep the visible outline outside the control rather than replacing it with a subtle color shift.
+**The Focus Contrast Rule.** Light surfaces use the navy focus outline; the navy rail, contact, and dark-project fields use the orange outline. Keep the visible outline outside the control rather than replacing it with a subtle color shift.
 
 ## Typography
 
@@ -214,23 +231,25 @@ The composed hero keeps its display cap on wide screens. Between 851px and 1150p
 
 ## Layout
 
-Desktop uses a fixed left identity rail and a padded main column. The rail is 200px wide by default, 170px at 1150px and below, and 240px from 1800px. Main and footer offsets follow that width. The main container caps at 1700px, with the fluid page inset token; the inset becomes 32px below 1150px, 28px below 850px, and 20px below 600px.
+Desktop uses a fixed navy left identity rail and a padded main column. The rail is 200px wide by default, 170px at 1150px and below, and 240px from 1800px. Main and footer offsets follow that width. The main container caps at 1700px, with the fluid page inset token; the inset becomes 32px below 1150px, 28px below 850px, and 20px below 600px.
 
-The homepage hero uses an asymmetric .43fr / .57fr grid with a fluid 28–48px column gap and no minimum viewport height. The first name line spans the grid; Daniel occupies the left side while the real HKU/Pok Fu Lam photograph begins below the first line on the right. The positioning statement, introduction, and grouped work/contact actions sit beneath Daniel. The availability note spans the bottom row. The photograph stays inside the hero with a location caption, a link to the harbour photograph, and a native credit disclosure; visible text does not overlay it.
+The homepage hero uses an asymmetric .43fr / .57fr grid with a fluid 28–48px column gap and no minimum viewport height. The first name line spans the grid; Daniel occupies the left side while the real Victoria Harbour dusk photograph begins below the first line on the right. The positioning statement, introduction, and grouped work/contact actions sit beneath Daniel. The availability note spans the bottom row. The photograph stays inside the hero with a location caption, a link to its uncropped panorama, and a native credit disclosure; visible text does not overlay it. The downloaded panorama is 1280×508px, photographed by Dllu from Victoria Peak and licensed CC BY-SA 4.0. The source-file and license links remain in the credit disclosure.
 
 Hero top padding is 48px on the default desktop layout, 36px between 851px and 1150px, and 32px at 850px and below. At 600px and below it becomes a single column with 30px top padding, ordered name, introduction/actions, photograph, availability note. The image frame uses a 1.34 aspect ratio by default, 1.22 at 850px and below, and 1.48 at 600px and below. Crops apply only to photographs and contextual thumbnails. Scientific evidence remains contained and legible.
 
-Sections begin with 144px of space, reduced to 112px below 850px and 96px below 600px. Project features use asymmetric image/text columns and fluid 32–64px gaps. The first research figure is sticky at a 36px top offset on desktop and becomes static below 850px. The dark simulation project extends to the content column's outer edges using negative page insets.
+Reading chapters extend to the main column's outer edges using negative page insets and restore the same inset around their contents. They use equal top and bottom section padding, reduced at the tablet and phone breakpoints using the section spacing tokens. The homepage sequence is white introduction, pale blue selected work, white publications, pale blue about, white research, pale blue news, white experience, pale blue education/skills, and navy contact. The hero has its own bottom spacing token. Contact retains its existing 80px top inset, reduced to 56px on phones. The white evidence browser and news disclosure remain distinct within pale chapters.
+
+Project features use asymmetric image/text columns and fluid 32–64px gaps. The first research figure is sticky at a 36px top offset on desktop and becomes static below 850px. The dark simulation project extends to the content column's outer edges using negative page insets.
 
 The evidence browser uses a 1.25fr / 1fr figure-and-copy split; below 1150px the figure moves above a two-column text region, and below 600px the copy becomes a simple stack. Publication rows use .68fr / 1fr columns. About uses 1.15fr / .8fr columns, research themes use two columns, and the desktop timeline separates date, position, and description. These arrangements collapse to one reading column on small screens. Photo pairings retain deliberate size differences. In the dark project above 600px, the title occupies the first row of the left column and its factual context sits directly beneath it; narrative and resources occupy the right column.
 
-At 850px and below the rail becomes a sticky top header with a compact portrait, identity, and a Menu control. With JavaScript the navigation drawer is anchored immediately below the 76px header and overlays the reading surface without moving it; it scrolls within the remaining dynamic viewport height. A translucent navy backdrop dismisses the drawer. The navigation uses three columns, reduced to two below 600px; the CV and contact links appear beneath it. Without JavaScript, the mobile header is in normal flow and navigation stays visible. Anchor scrolling reserves 28px on desktop and 108px in the mobile-header layout.
+At 850px and below the rail becomes a sticky navy top header with a compact portrait, identity, and a Menu control. With JavaScript the navy navigation drawer spans the full header width immediately below the 76px header and overlays the reading surface without moving it; it scrolls within the remaining dynamic viewport height. Its absolute positioning is relative to the full rail inner container. A translucent navy backdrop dismisses the drawer. The navigation uses three columns, reduced to two below 600px; the CV and contact links appear beneath it. Without JavaScript, the mobile header is in normal flow and navigation stays visible. Anchor scrolling reserves 28px on desktop and 108px in the mobile-header layout.
 
-The manipulation detail page shares the rail, page insets, type, and surfaces. Its hero stacks the full title and video; a navy three-metric band follows. Two-column conclusions and scope layouts collapse below 1100px; method and evidence grids collapse below 600px.
+The manipulation detail page shares the navy rail, page insets, type, and chapter padding. Outcomes and evidence use pale blue full-width fields between white chapters. Its hero stacks the full title and video; a navy three-metric band follows, with the hero-bottom spacing token separating it from the next chapter. Two-column conclusions and scope layouts collapse below 1100px; method and evidence grids collapse below 600px.
 
 ## Elevation & Depth
 
-The reading system is flat. White, soft-neutral, and navy fields, image scale, and whitespace provide hierarchy. There are no routine card shadows, gradients, decorative grids, or 3D effects in the implementation. A light structural shadow and translucent backdrop separate the open mobile navigation drawer from the reading surface.
+The reading system is flat. White, pale blue, soft-neutral, and navy fields, image scale, and whitespace provide hierarchy. There are no routine card shadows, gradients, decorative grids, or 3D effects in the implementation. A light structural shadow and translucent backdrop separate the open mobile navigation drawer from the reading surface.
 
 ### Shadow Vocabulary
 
@@ -248,13 +267,13 @@ The scripted current-navigation marker is a small 6px square; the source-only cu
 
 ### Filled actions and text links
 
-Filled actions use the button token, a square silhouette, an inline arrow, and a 16px icon gap. The rail CV action spans its available width and uses the more compact cv-link padding. Pointer hover changes filled actions to Simulation Night; press scales buttons and these action links to .97 over the observed short transition.
+Filled reading-column actions use the button token, a square silhouette, an inline arrow, and a 16px icon gap. The rail CV action spans its available width and uses the more compact cv-link padding, paper fill, and navy text. Pointer hover changes reading-column filled actions to Simulation Night and the rail CV action to Chapter Blue; press scales buttons and these action links to .97 over the observed short transition.
 
 Text links use a quiet inline arrow and no resting underline. On fine-pointer hover their text receives an orange 2px underline and the arrow shifts 2px right and up. Publication resource links retain their orange underline at rest.
 
 ### Navigation and mobile header
 
-Default links use muted navy. Hover restores ink; current-location links use weight 700 and the orange square at the left. The active link follows section position, and the final item becomes current near the document bottom. With JavaScript the single square travels to the current link over 220ms; keyboard input moves it immediately.
+Default links use Rail Mist on the navy ground, with the navigation-link padding. Inactive links gain Rail Hover fill and paper text on fine-pointer hover; current-location links use paper fill, navy text, weight 700, and the orange square at the left. The filled destination, weight, and marker reinforce chapter identity alongside color. The active link follows section position using a reading line 35% into the visible viewport, capped at 320px on desktop and 240px in the mobile layout; the final item becomes current near the document bottom. With JavaScript the single square travels to the current link over 220ms; keyboard input moves it immediately.
 
 Menu is a square, text-and-plus control with at least a 44px target height. Opening reveals the anchored navigation and rail actions and rotates the plus 45 degrees. Pointer opening fades and moves the drawer from 10px above over 220ms, with a 180ms backdrop fade; closing fades both over 100ms. Repeated toggles cancel the prior animations and apply the latest state. Closed controls become inert immediately. Escape closes the menu and returns focus to the toggle; it also closes after an outside click, focus leaves the rail, a link is chosen, or the viewport crosses into desktop width. Keyboard and reduced-motion operation settle immediately. The menu remains a disclosure with ordinary document focus behavior.
 
@@ -264,7 +283,7 @@ Soft-neutral surfaces use disclosure padding. Summary text is 14px and weight 50
 
 ### Evidence browser
 
-A quiet surface groups the introductory heading, evidence controls, a scientific figure, and its explanation. Controls are square, borderless, at least 44px high, and wrap when necessary. Selection reverses to paper text on navy; an unselected pointer hover uses the control-hover fill. Preserve a visible focus outline on both controls and the active panel.
+A white surface within the pale selected-work chapter groups the introductory heading, evidence controls, a scientific figure, and its explanation. Controls are square, borderless, at least 44px high, and wrap when necessary. Selection reverses to paper text on navy; an unselected pointer hover uses the control-hover fill. Preserve a visible focus outline on both controls and the active panel.
 
 JavaScript assigns tab semantics and one tab stop to the active control. Left/Right wrap between views; Home/End select the first/last. Keyboard activation changes the view immediately. Pointer activation uses a native View Transition for the evidence browser: the outgoing view fades over 100ms and the incoming view settles from 8px below over 240ms. Rapid changes skip obsolete snapshots and keep the latest selection. Browsers without this API apply the state immediately and settle the new panel from 4px below and .6 opacity over 180ms. Reduced motion skips either transition. Without JavaScript the selector is hidden and all three evidence panels remain readable.
 
@@ -298,7 +317,9 @@ State transitions remain short: arrow movement 180ms, action press 140ms, disclo
 
 - **Do** use self-hosted Chivo and the documented size hierarchy, preserving readable body and metadata text.
 - **Do** use the fixed identity rail on desktop and the disclosed top navigation on small screens.
-- **Do** preserve navy focus outlines on light surfaces and orange outlines in the dark project and contact fields.
+- **Do** preserve navy focus outlines on light surfaces and orange outlines in the navy rail, dark project, and contact fields.
+- **Do** keep the navy navigation ground continuous across desktop rail, mobile header, and full-width drawer, with a paper current destination and reversed CV action.
+- **Do** separate reading chapters with the documented white and pale blue fields and equal top/bottom chapter padding.
 - **Do** pair every scientific figure, metric, and recording with its visible scope and caption.
 - **Do** retain original paper titles as visible paragraphs below concise publication topic headings.
 - **Do** preserve native video controls, manual playback, and reduced-motion behavior.

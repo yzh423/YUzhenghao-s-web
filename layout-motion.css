@@ -1,4 +1,38 @@
 /* Opening composition and shared interaction choreography. */
+:root {
+  --section-ground: #eef1f6;
+  --rail-secondary: #c8d3e8;
+  --rail-hover: #34425f;
+  --section-inset: 96px;
+}
+.site-rail { background: var(--ink); color: var(--paper); }
+.site-rail :focus-visible { outline-color: var(--accent); }
+.rail-inner { scrollbar-color: var(--rail-secondary) var(--ink); }
+.site-rail .primary-navigation { align-items: stretch; gap: 4px; }
+.site-rail .primary-navigation > a { color: var(--rail-secondary); padding: 8px 12px; }
+.site-rail .primary-navigation > a[aria-current] { background: var(--paper); color: var(--ink); }
+.site-rail .primary-navigation > a[aria-current]::before { top: 17px; }
+.site-rail .rail-footer p { color: var(--rail-secondary); }
+.site-rail .cv-link { background: var(--paper); color: var(--ink); }
+.site-rail .rail-footer > div a { color: var(--paper); }
+
+/* Large fields separate chapters; the navigation always retains its navy ground. */
+.portfolio-home main > .section,
+.research-detail main > .section:not(.detail-hero) {
+  margin-inline: calc(-1 * var(--space));
+  padding: var(--section-inset) var(--space);
+}
+.portfolio-home main > .section { background: var(--paper); }
+.portfolio-home main > :is(#projects, #about, #news, #cv),
+.research-detail main > :is(#outcomes, #evidence) { background: var(--section-ground); }
+.portfolio-home .projects-section .evidence-browser,
+.portfolio-home .news-archive { background: var(--paper); }
+.portfolio-home .timeline .experience-featured { background: var(--section-ground); }
+.portfolio-home main > .contact-section,
+.research-detail main > .contact-section { margin-top: 0; }
+.portfolio-home .hero-composed { padding-bottom: 64px; }
+.research-detail .detail-stat-band { margin-bottom: 64px; }
+
 .navigation-drawer { display: contents; }
 .primary-navigation { position: relative; }
 .nav-indicator { position: absolute; inset: 0 auto auto 0; width: 6px; height: 6px; background: var(--accent); pointer-events: none; transition: transform 220ms var(--ease-out); }
@@ -58,6 +92,8 @@ html[data-view="evidence"]::view-transition-old(page-content), html[data-view="e
 @keyframes reading-out { to { opacity: 0; } }
 @keyframes reading-in { from { opacity: 0; transform: translateY(8px); } }
 @media (hover: hover) and (pointer: fine) {
+  .site-rail .primary-navigation > a:hover:not([aria-current]) { color: var(--paper); background: var(--rail-hover); }
+  .site-rail .cv-link:hover { background: var(--section-ground); }
   .hero-image-frame img { transition: transform 700ms var(--ease-out); }
   .hero-image-frame:hover img { transform: scale(1.025); }
   .availability-link:hover, .place-caption a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
@@ -66,10 +102,11 @@ html[data-view="evidence"]::view-transition-old(page-content), html[data-view="e
   .hero-composed { --hero-size: 8.1vw; padding-top: 36px; column-gap: 32px; }
 }
 @media (max-width: 850px) {
+  :root { --section-inset: 80px; }
   .navigation-drawer { display: block; grid-column: 1 / -1; }
   .js .site-rail { overflow: visible; }
   .rail-inner { position: relative; }
-  .js .navigation-drawer { position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100dvh - 76px); overflow-y: auto; overscroll-behavior: contain; padding: 0 var(--space) 24px; background: var(--paper); box-shadow: 0 20px 28px #1f2b4d0d; } /* taste-skill-ignore: real overlay panel */
+  .js .navigation-drawer { position: absolute; grid-column: auto; top: 100%; left: 0; right: 0; max-height: calc(100dvh - 76px); overflow-y: auto; overscroll-behavior: contain; padding: 0 var(--space) 24px; background: var(--ink); box-shadow: 0 20px 28px #1f2b4d0d; scrollbar-color: var(--rail-secondary) var(--ink); } /* taste-skill-ignore: real overlay panel */
   .js .site-rail[data-menu-open="false"] .navigation-drawer { display: none; }
   .js .site-rail[data-menu-open="true"] { box-shadow: none; } /* taste-skill-ignore: remove former header shadow */
   .menu-backdrop { position: fixed; inset: 76px 0 0; z-index: 39; display: block; background: #1f2b4d24; }
@@ -78,8 +115,11 @@ html[data-view="evidence"]::view-transition-old(page-content), html[data-view="e
   .hero-composed { --hero-size: clamp(56px, 9.2vw, 80px); padding-top: 32px; column-gap: 32px; row-gap: 26px; }
   .hero-composed .hero-positioning { font-size: 21px; }
   .hero-image-frame { aspect-ratio: 1.22; }
+  .site-rail .primary-navigation { gap: 8px 24px; }
+  .site-rail .primary-navigation > a { padding: 8px 12px; }
 }
 @media (max-width: 600px) {
+  :root { --section-inset: 64px; }
   .hero-composed { --hero-size: clamp(40px, 10.9vw, 62px); display: flex; flex-direction: column; gap: 0; min-height: 0; padding-top: 30px; }
   .hero-composed h1 { line-height: 1.2; margin: 0 0 30px; }
   .hero-composed .name-line:last-child { max-width: none; }
@@ -90,6 +130,8 @@ html[data-view="evidence"]::view-transition-old(page-content), html[data-view="e
   .hero-image-frame { aspect-ratio: 1.48; }
   .hero-place figcaption { padding-top: 12px; }
   .hero-composed .hero-note { margin-top: 24px; max-width: 34ch; padding-top: 0; }
+  .portfolio-home .hero-composed { padding-bottom: 48px; }
+  .research-detail .detail-stat-band { margin-bottom: 48px; }
 }
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
